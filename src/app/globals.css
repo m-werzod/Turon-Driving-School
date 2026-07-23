@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — PROVISIONAL palette (TZ doc 05 pending the logo file; see
+ * docs/DECISIONS.md D-05 and docs/OPEN_ITEMS.md #6). Replacing the brand
+ * scale here re-themes the entire platform; components only consume tokens.
+ */
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+
+  /* Brand — confident blue (provisional, to be derived from the logo). */
+  --color-brand-50: #eff5ff;
+  --color-brand-100: #dbe8fe;
+  --color-brand-200: #bfd7fe;
+  --color-brand-300: #93bbfd;
+  --color-brand-400: #6099fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+  --color-brand-950: #172554;
+
+  /* Ink — cool neutral scale for text and surfaces. */
+  --color-ink-50: #f8fafc;
+  --color-ink-100: #f1f5f9;
+  --color-ink-200: #e2e8f0;
+  --color-ink-300: #cbd5e1;
+  --color-ink-400: #94a3b8;
+  --color-ink-500: #64748b;
+  --color-ink-600: #475569;
+  --color-ink-700: #334155;
+  --color-ink-800: #1e293b;
+  --color-ink-900: #0f172a;
+  --color-ink-950: #020617;
+
+  /* Accent — amber, reserved for promo/urgency surfaces only. */
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-accent-700: #b45309;
+
+  /* Feedback */
+  --color-success-50: #f0fdf4;
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+  --color-danger-50: #fef2f2;
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+
+  --radius-card: 1rem;
+  --radius-control: 0.625rem;
+
+  --shadow-card: 0 1px 2px 0 rgb(2 6 23 / 0.04),
+    0 8px 24px -12px rgb(2 6 23 / 0.12);
+  --shadow-card-hover: 0 2px 4px 0 rgb(2 6 23 / 0.05),
+    0 16px 40px -12px rgb(2 6 23 / 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-white text-ink-900 antialiased;
+}
+
+::selection {
+  background-color: var(--color-brand-100);
+  color: var(--color-brand-900);
+}
+
+/* Single, consistent focus treatment (WCAG 2.2 focus-visible). */
+:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/*
+ * Scroll-reveal motion (see docs/DECISIONS.md D-04): transform/opacity only,
+ * driven by an IntersectionObserver that toggles data-revealed.
+ * Reduced-motion users get instant, motionless content.
+ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

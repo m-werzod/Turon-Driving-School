@@ -1,0 +1,42 @@
+import { getLocale, getTranslations } from "next-intl/server";
+import { Container } from "@/components/ui/container";
+import { PromoCountdown } from "./promo-countdown";
+import { getCategories } from "@/server/content";
+import { activePromo } from "@/lib/promo";
+import { formatDeadline } from "@/lib/format";
+import type { ContentLocale } from "@/content/types";
+
+/**
+ * Active-promo band with live countdown (TZ templates T-01/T-05). Picks the
+ * soonest-ending active promo across categories. Renders nothing when no promo
+ * is active — the auto-expiry contract (AF-02) means an ended promo simply
+ * disappears on the next revalidation with no manual action.
+ */
+export async function PromoBand() {
+  const locale = (await getLocale()) as ContentLocale;
+  const t = await getTranslations("home.promo");
+  const categories = await getCategories();
+
+  const soonest = categories
+    .map((category) => activePromo(category.promo))
+    .filter((promo): promo is NonNullable<typeof promo> => promo !== null)
+    .sort((a, b) => a.endsOn.localeCompare(b.endsOn))[0];
+
+  if (!soonest) return null;
+
+  return (
+    <section className="bg-accent-500">
+      <Container className="py-6">
+        <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
+          <div>
+            <p className="text-lg font-bold text-ink-950">{t("title")}</p>
+            <p className="text-sm text-ink-900/80">
+              {t("subtitle")} · {formatDeadline(soonest.endsOn, locale)}
+            </p>
+          </div>
+          <PromoCountdown endsOn={soonest.endsOn} />
+        </div>
+      </Container>
+    </section>
+  );
+}

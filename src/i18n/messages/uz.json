@@ -1,0 +1,404 @@
+{
+  "common": {
+    "brand": "Turon Avtomaktab",
+    "register": "Ro'yxatdan o'tish",
+    "call": "Qo'ng'iroq qilish",
+    "learnMore": "Batafsil",
+    "viewAll": "Barchasini ko'rish",
+    "priceFrom": "{price} dan boshlab",
+    "months": "{months} oy",
+    "promo": "Aksiya",
+    "untilDate": "{date} gacha",
+    "daysLeft": "{count} kun qoldi",
+    "workingHours": "Ish vaqti",
+    "phoneNumbers": "Telefon raqamlari"
+  },
+  "nav": {
+    "home": "Bosh sahifa",
+    "categories": "Toifalar",
+    "express": "Ekspress kurslar",
+    "pricing": "Narxlar",
+    "branches": "Filiallar",
+    "results": "Natijalar",
+    "gallery": "Galereya",
+    "about": "Biz haqimizda",
+    "faq": "Savol-javob",
+    "contact": "Aloqa",
+    "register": "Ro'yxatdan o'tish",
+    "privacy": "Maxfiylik siyosati"
+  },
+  "header": {
+    "openMenu": "Menyuni ochish",
+    "closeMenu": "Menyuni yopish",
+    "languageLabel": "Sayt tili"
+  },
+  "actionBar": {
+    "call": "Qo'ng'iroq",
+    "register": "Yozilish",
+    "chooseNumber": "Raqamni tanlang",
+    "close": "Yopish"
+  },
+  "footer": {
+    "tagline": "Namangan viloyatidagi yetakchi avtomaktab — 7 ta filial va o'z avtodromi bilan.",
+    "pages": "Sahifalar",
+    "categories": "Toifalar",
+    "branches": "Filiallar",
+    "rights": "Barcha huquqlar himoyalangan."
+  },
+  "home": {
+    "meta": {
+      "title": "Turon Avtomaktab — Namangandagi yetakchi haydovchilik maktabi",
+      "description": "7 ta filial, o'z avtodromi va tajribali instruktorlar. A, B, BC, C, CE, BE, D toifalari bo'yicha haydovchilik kurslari. Hoziroq ro'yxatdan o'ting."
+    },
+    "hero": {
+      "title": "Haydovchilik guvohnomasiga ishonchli yo'l",
+      "subtitle": "Namangan viloyati bo'ylab 7 ta filial, o'z avtodromimiz va natijaga ishlaydigan tajribali instruktorlar jamoasi.",
+      "primaryCta": "Ro'yxatdan o'tish",
+      "secondaryCta": "Narxlarni ko'rish",
+      "chipBranches": "7 ta filial",
+      "chipAutodrome": "O'z avtodromimiz",
+      "chipGraduates": "{count}+ bitiruvchi"
+    },
+    "promo": {
+      "title": "Amaldagi aksiya",
+      "subtitle": "Chegirmali narxlar cheklangan muddatga amal qiladi — o'rningizni band qiling."
+    },
+    "categories": {
+      "title": "Haydovchilik toifalari",
+      "subtitle": "O'zingizga mos yo'nalishni tanlang — narxlar va muddatlar har bir sahifada aniq ko'rsatilgan."
+    },
+    "why": {
+      "title": "Nega aynan Turon?",
+      "autodromeTitle": "O'z avtodromimiz",
+      "autodromeBody": "Imtihon elementlarini haqiqiy avtodromda, imtihondagidek sharoitda mashq qilasiz.",
+      "branchesTitle": "7 ta qulay filial",
+      "branchesBody": "Namangan viloyati bo'ylab filiallar tarmog'i — o'qish uchun uzoqqa qatnash shart emas.",
+      "instructorsTitle": "Tajribali instruktorlar",
+      "instructorsBody": "Sabr-toqatli va o'z ishiga mas'uliyat bilan yondashadigan ustozlar jamoasi.",
+      "paymentTitle": "Qulay to'lov",
+      "paymentBody": "Oldindan to'lov bilan o'rin band qilinadi, qolgan summa o'qish davomida to'lanadi."
+    },
+    "results": {
+      "title": "So'nggi natijalar",
+      "subtitle": "Har oy bitiruvchilarimiz imtihonlardan muvaffaqiyatli o'tmoqda.",
+      "cta": "Barcha natijalar"
+    },
+    "branches": {
+      "title": "Filiallarimiz",
+      "subtitle": "Sizga eng yaqin filialni tanlang — har birida qabul ochiq."
+    },
+    "express": {
+      "title": "Imtihondan o'ta olmadingizmi?",
+      "subtitle": "Ekspress kurslar: nazariya bo'yicha 10 kunlik jadal tayyorlov va instruktor bilan yakkama-yakka amaliy mashg'ulotlar.",
+      "cta": "Ekspress kurslar"
+    },
+    "faq": {
+      "title": "Ko'p so'raladigan savollar",
+      "cta": "Barcha savol-javoblar"
+    },
+    "cta": {
+      "title": "Bugun birinchi qadamni tashlang",
+      "subtitle": "Formani to'ldiring — menejerimiz ish vaqtida qo'ng'iroq qilib, barcha savollaringizga javob beradi."
+    }
+  },
+  "categoriesPage": {
+    "meta": {
+      "title": "Haydovchilik toifalari — A, B, BC, C, CE, BE, D",
+      "description": "Turon Avtomaktabdagi barcha haydovchilik toifalari: narxlar, muddatlar va talablar. O'zingizga mos yo'nalishni tanlang."
+    },
+    "title": "Haydovchilik toifalari",
+    "intro": "Yengil avtomobildan avtobusgacha — barcha asosiy toifalar bo'yicha professional tayyorlov.",
+    "which": {
+      "title": "Qaysi toifa menga mos?",
+      "body": "Shaxsiy avtomobil uchun — B toifa. Yuk tashish sohasida ishlash uchun — C yoki tejamkor BC. Tirkama bilan yurish uchun — BE yoki CE. Yo'lovchi tashish uchun — D. Ikkilanayotgan bo'lsangiz, qo'ng'iroq qiling — bepul maslahat beramiz."
+    }
+  },
+  "categoryDetail": {
+    "durationLabel": "Davomiyligi",
+    "durationValue": "{months} oy",
+    "minAgeLabel": "Yosh",
+    "minAgeValue": "{age} yoshdan",
+    "priceLabel": "Kurs narxi",
+    "included": "Kursga nimalar kiradi",
+    "curriculum": "O'quv dasturi",
+    "requirements": "Talablar va hujjatlar",
+    "process": {
+      "title": "O'qish qanday kechadi",
+      "s1Title": "Ro'yxatdan o'tish",
+      "s1Body": "Ariza qoldirasiz, menejer qo'ng'iroq qilib guruhga yozadi.",
+      "s2Title": "Nazariy kurs",
+      "s2Body": "Yo'l qoidalari va xavfsizlik asoslarini o'rganasiz.",
+      "s3Title": "Avtodrom",
+      "s3Body": "Amaliy elementlarni o'z avtodromimizda mashq qilasiz.",
+      "s4Title": "Shahar amaliyoti",
+      "s4Body": "Instruktor bilan real yo'l sharoitida haydaysiz.",
+      "s5Title": "Imtihon",
+      "s5Body": "Ichki sinovdan so'ng davlat imtihonini topshirasiz."
+    },
+    "vehicles": "O'quv transportlari",
+    "branchesTitle": "Qaysi filiallarda mavjud",
+    "faqTitle": "Ko'p so'raladigan savollar",
+    "form": {
+      "title": "Kursga yoziling",
+      "subtitle": "Formani to'ldiring — menejerimiz ish vaqtida siz bilan bog'lanadi."
+    },
+    "related": "Boshqa toifalar",
+    "meta": {
+      "title": "{name} — haydovchilik kursi | Turon Avtomaktab",
+      "description": "{name} bo'yicha o'qish: narxi, davomiyligi, talablar va o'quv dasturi. Turon Avtomaktabda ro'yxatdan o'ting."
+    }
+  },
+  "expressPage": {
+    "meta": {
+      "title": "Ekspress kurslar — imtihonga qayta tayyorlov",
+      "description": "Imtihondan o'ta olmaganlar uchun: nazariya bo'yicha 10 kunlik jadal kurs va instruktor bilan yakkama-yakka amaliy mashg'ulotlar."
+    },
+    "title": "Ekspress kurslar",
+    "intro": "Imtihondan o'ta olmadingizmi? Xafa bo'lmang — maqsadli tayyorlov bilan qayta topshirishga ishonch bilan boring.",
+    "priceLabel": "Narx",
+    "durationLabel": "Davomiyligi",
+    "how": {
+      "title": "Qanday ishlaydi",
+      "s1Title": "Ariza qoldirasiz",
+      "s1Body": "Sizga qaysi yo'nalish kerakligini menejer bilan aniqlaysiz.",
+      "s2Title": "Jadval tuziladi",
+      "s2Body": "Sizga qulay vaqtga mashg'ulotlar rejalashtiriladi.",
+      "s3Title": "Imtihonga tayyorsiz",
+      "s3Body": "Qiyin elementlar ustida ishlab, imtihonga ishonch bilan kirasiz."
+    },
+    "form": {
+      "title": "Ekspress kursga yoziling",
+      "subtitle": "Formani to'ldiring — menejerimiz ish vaqtida siz bilan bog'lanadi."
+    }
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "Narxlar — haydovchilik kurslari",
+      "description": "Turon Avtomaktabdagi barcha toifalar va ekspress kurslar narxlari. Aksiya narxlari va qulay to'lov shartlari."
+    },
+    "title": "Narxlar",
+    "intro": "Barcha toifalar bo'yicha aniq va oshkora narxlar. Aksiya narxlari ko'rsatilgan muddatgacha amal qiladi.",
+    "expressTitle": "Ekspress kurslar",
+    "terms": {
+      "title": "To'lov shartlari",
+      "t1Title": "Oldindan to'lov",
+      "t1Body": "O'rin oldindan to'lov bilan band qilinadi.",
+      "t2Title": "Bo'lib to'lash",
+      "t2Body": "Qolgan summani o'qish davomida qismlarga bo'lib to'laysiz.",
+      "t3Title": "Yashirin to'lovlarsiz",
+      "t3Body": "Kurs narxiga nazariya, amaliyot va ichki imtihonlar kiradi."
+    },
+    "faqTitle": "To'lov haqida savollar",
+    "cardCta": "Yozilish"
+  },
+  "branchesPage": {
+    "meta": {
+      "title": "Filiallar — Namangan viloyati bo'ylab 7 ta manzil",
+      "description": "Turon Avtomaktab filiallari: Kosonsoy, Tergachi, Buloq (avtodrom), Kamuna, Bog'ishamol, Namangan shahri va To'raqo'rg'on. Manzillar va telefonlar."
+    },
+    "title": "Filiallarimiz",
+    "intro": "Namangan viloyati bo'ylab 7 ta filial — sizga eng yaqinini tanlang."
+  },
+  "branchDetail": {
+    "landmark": "Mo'ljal",
+    "phones": "Telefonlar",
+    "hours": "Ish vaqti",
+    "categoriesTitle": "Ushbu filialdagi yo'nalishlar",
+    "directionsTitle": "Qanday borish mumkin",
+    "openGoogle": "Google Maps'da ochish",
+    "openYandex": "Yandex Maps'da ochish",
+    "autodromeBadge": "Avtodrom",
+    "meta": {
+      "title": "{name} | Turon Avtomaktab",
+      "description": "{name}: manzil, telefon, ish vaqti va mavjud yo'nalishlar. Qo'ng'iroq qiling yoki ro'yxatdan o'ting."
+    }
+  },
+  "resultsPage": {
+    "meta": {
+      "title": "Natijalar — bitiruvchilarimiz muvaffaqiyati",
+      "description": "Turon Avtomaktab o'quvchilarining oylik imtihon natijalari. Raqamlar o'zi uchun gapiradi."
+    },
+    "title": "Natijalarimiz",
+    "intro": "Har oy o'quvchilarimiz imtihonlardan muvaffaqiyatli o'tib, guvohnoma olmoqda. Quyida oylik natijalar.",
+    "passed": "{count} nafar o'quvchi imtihondan o'tdi",
+    "counters": {
+      "branches": "Filiallar",
+      "graduates": "Bitiruvchilar",
+      "years": "Yillik tajriba"
+    },
+    "empty": {
+      "title": "Natijalar tez orada e'lon qilinadi",
+      "body": "Oylik imtihon natijalari shu sahifada muntazam e'lon qilib boriladi."
+    }
+  },
+  "galleryPage": {
+    "meta": {
+      "title": "Galereya — avtodrom, mashg'ulotlar va bitiruvchilar",
+      "description": "Turon Avtomaktab hayotidan lavhalar: avtodrom, o'quv jarayoni, transport parki va bitiruvchilar."
+    },
+    "title": "Galereya",
+    "intro": "Avtodrom, mashg'ulotlar, transport parki va bitiruvchilarimiz — hammasi real kadrlarda.",
+    "empty": {
+      "title": "Galereya tayyorlanmoqda",
+      "body": "Tez orada bu yerda avtodrom, mashg'ulotlar va bitiruvchilarimiz suratlari joylanadi. Yangiliklarni Telegram kanalimizda kuzatib boring."
+    }
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "Biz haqimizda — Turon Avtomaktab",
+      "description": "Turon Avtomaktab — Namangan viloyatidagi yetakchi haydovchilik maktabi: 7 ta filial, o'z avtodromi va tajribali jamoa."
+    },
+    "title": "Biz haqimizda",
+    "intro": "Turon Avtomaktab — Namangan viloyatidagi yetakchi haydovchilik maktablaridan biri.",
+    "storyP1": "Maqsadimiz oddiy: har bir o'quvchimizni yo'lda o'ziga ishonadigan, qoidalarni hurmat qiladigan va xavfsiz haydaydigan haydovchi qilib tayyorlash. Buning uchun kuchli nazariy baza, real amaliyot va natijaga yo'naltirilgan tizim ustida ishlaymiz.",
+    "storyP2": "Bugun Turon — bu viloyat bo'ylab 7 ta filial, o'z avtodromi, zamonaviy o'quv transporti va minglab muvaffaqiyatli bitiruvchilar. Har oy yuzlab o'quvchilarimiz imtihonlardan o'tib, haydovchilik guvohnomasiga ega bo'lmoqda.",
+    "numbers": {
+      "title": "Raqamlarda",
+      "branches": "Filiallar",
+      "graduates": "Bitiruvchilar",
+      "years": "Yillik tajriba"
+    },
+    "autodrome": {
+      "title": "O'z avtodromimiz",
+      "body": "Buloqdagi avtodromimizda imtihonning barcha elementlari — estakada, parallel parkovka, burilishlar — real imtihon sharoitida mashq qilinadi. O'quvchilarimiz imtihonga notanish maydonchaga emas, o'zi bilgan muhitga kiradi."
+    },
+    "fleet": {
+      "title": "Transport parkimiz",
+      "body": "Yengil avtomobillardan yuk mashinalari va avtobusgacha — barcha toifalar uchun texnik soz, zamonaviy o'quv transporti."
+    },
+    "values": {
+      "title": "Qadriyatlarimiz",
+      "v1Title": "Halollik",
+      "v1Body": "Aniq narxlar, oshkora shartlar va real natijalar bilan ishlaymiz.",
+      "v2Title": "Xavfsizlik",
+      "v2Body": "Biz shunchaki imtihonga emas, umr bo'yi xavfsiz haydashga o'rgatamiz.",
+      "v3Title": "Natija",
+      "v3Body": "Tizimimiz har bir o'quvchini imtihondan o'tishiga qaratilgan."
+    },
+    "license": {
+      "title": "Rasmiy litsenziya",
+      "body": "Faoliyatimiz davlat litsenziyasi asosida olib boriladi."
+    }
+  },
+  "faqPage": {
+    "meta": {
+      "title": "Savol-javob — Turon Avtomaktab",
+      "description": "Ro'yxatdan o'tish, to'lov, o'quv jarayoni, imtihonlar va hujjatlar bo'yicha ko'p so'raladigan savollarga javoblar."
+    },
+    "title": "Savol-javob",
+    "intro": "Eng ko'p so'raladigan savollarga javoblar. Savolingiz topilmadimi? Qo'ng'iroq qiling — yordam beramiz.",
+    "topics": {
+      "enrollment": "Ro'yxatdan o'tish",
+      "payment": "To'lov",
+      "process": "O'quv jarayoni",
+      "exams": "Imtihonlar",
+      "documents": "Hujjatlar"
+    },
+    "still": {
+      "title": "Savolingiz qoldimi?",
+      "body": "Qo'ng'iroq qiling yoki Telegram orqali yozing — tezda javob beramiz.",
+      "telegram": "Telegramda yozish"
+    }
+  },
+  "contactPage": {
+    "meta": {
+      "title": "Aloqa — Turon Avtomaktab",
+      "description": "Turon Avtomaktab bilan bog'lanish: telefon raqamlar, ish vaqti, filiallar va ijtimoiy tarmoqlar."
+    },
+    "title": "Aloqa",
+    "intro": "Savollaringiz bo'lsa, qo'ng'iroq qiling yoki formani to'ldiring — ish vaqtida albatta javob beramiz.",
+    "phonesTitle": "Telefon raqamlari",
+    "socialsTitle": "Ijtimoiy tarmoqlar",
+    "hoursTitle": "Ish vaqti",
+    "branchesTitle": "Filiallar",
+    "form": {
+      "title": "Ariza qoldiring",
+      "subtitle": "Menejerimiz ish vaqtida siz bilan bog'lanadi."
+    }
+  },
+  "registerPage": {
+    "meta": {
+      "title": "Ro'yxatdan o'tish — Turon Avtomaktab",
+      "description": "Haydovchilik kursiga onlayn ariza qoldiring. Menejerimiz ish vaqtida qo'ng'iroq qilib, guruhga yozib qo'yadi."
+    },
+    "title": "Ro'yxatdan o'tish",
+    "intro": "Formani to'ldiring — qolganini biz hal qilamiz.",
+    "steps": {
+      "title": "Keyin nima bo'ladi?",
+      "s1Title": "Qo'ng'iroq",
+      "s1Body": "Menejerimiz ish vaqtida siz bilan bog'lanadi.",
+      "s2Title": "Guruh tanlash",
+      "s2Body": "Sizga qulay filial va jadvalni birga tanlaymiz.",
+      "s3Title": "O'qish boshlanadi",
+      "s3Body": "Oldindan to'lov bilan o'rningiz band qilinadi va darslar boshlanadi."
+    }
+  },
+  "privacyPage": {
+    "meta": {
+      "title": "Maxfiylik siyosati — Turon Avtomaktab",
+      "description": "Turon Avtomaktab veb-saytida shaxsiy ma'lumotlarning to'planishi, ishlatilishi va himoya qilinishi tartibi."
+    },
+    "title": "Maxfiylik siyosati",
+    "intro": "Ushbu siyosat Turon Avtomaktab veb-sayti orqali taqdim etilgan shaxsiy ma'lumotlar qanday to'planishi, ishlatilishi va himoya qilinishini belgilaydi.",
+    "collect": {
+      "title": "Qanday ma'lumotlar to'planadi",
+      "body": "Ariza formasi orqali siz ixtiyoriy ravishda taqdim etgan ma'lumotlar: ismingiz, telefon raqamingiz, tanlangan yo'nalish va filial. Shuningdek, sayt tili bo'yicha tanlovingiz cookie faylida saqlanadi."
+    },
+    "use": {
+      "title": "Ma'lumotlar nima uchun ishlatiladi",
+      "body": "Taqdim etilgan ma'lumotlar faqat siz bilan bog'lanish, kursga yozish va xizmat ko'rsatish sifatini yaxshilash uchun ishlatiladi. Ma'lumotlaringiz reklama maqsadida uchinchi shaxslarga berilmaydi."
+    },
+    "store": {
+      "title": "Saqlash va himoya",
+      "body": "Ma'lumotlar himoyalangan tizimlarda saqlanadi va faqat vakolatli xodimlar uchun ochiq. Zarur bo'lmagan ma'lumotlar muntazam o'chirib boriladi."
+    },
+    "rights": {
+      "title": "Sizning huquqlaringiz",
+      "body": "Siz o'z ma'lumotlaringiz haqida ma'lumot olish, ularni tuzatish yoki o'chirishni so'rash huquqiga egasiz. Buning uchun biz bilan bog'laning."
+    },
+    "contact": {
+      "title": "Bog'lanish",
+      "body": "Maxfiylik siyosati bo'yicha savollar uchun saytda ko'rsatilgan telefon raqamlari orqali murojaat qiling."
+    }
+  },
+  "notFound": {
+    "title": "Sahifa topilmadi",
+    "body": "Siz qidirgan sahifa mavjud emas yoki ko'chirilgan. Quyidagi bo'limlardan birini tanlang.",
+    "home": "Bosh sahifa",
+    "categories": "Toifalar",
+    "pricing": "Narxlar",
+    "contact": "Aloqa"
+  },
+  "leadForm": {
+    "nameLabel": "Ismingiz",
+    "namePlaceholder": "Masalan: Aziz",
+    "phoneLabel": "Telefon raqamingiz",
+    "phonePlaceholder": "+998 90 123 45 67",
+    "courseLabel": "Yo'nalish",
+    "coursePlaceholder": "Yo'nalishni tanlang",
+    "courseCategoryGroup": "Toifalar",
+    "courseExpressGroup": "Ekspress kurslar",
+    "branchLabel": "Filial (ixtiyoriy)",
+    "branchNone": "Menejer bilan aniqlashtiraman",
+    "consentPrefix": "Men",
+    "consentLink": "maxfiylik siyosati",
+    "consentSuffix": "shartlariga roziman",
+    "submit": "Ariza yuborish",
+    "submitting": "Yuborilmoqda…",
+    "errors": {
+      "name": "Ismingizni kiriting (kamida 2 ta harf).",
+      "phone": "Telefon raqamini to'g'ri kiriting: +998 XX XXX XX XX.",
+      "consent": "Davom etish uchun maxfiylik siyosatiga rozilik bildiring.",
+      "rateLimited": "Juda ko'p urinish. Birozdan so'ng qayta urinib ko'ring yoki qo'ng'iroq qiling.",
+      "generic": "Xatolik yuz berdi. Qayta urinib ko'ring yoki telefon orqali bog'laning."
+    },
+    "success": {
+      "title": "Arizangiz qabul qilindi",
+      "body": "Menejerimiz ish vaqtida sizga qo'ng'iroq qiladi. Yangiliklar va aksiyalarni kuzatib borish uchun Telegram kanalimizga obuna bo'ling.",
+      "telegram": "Telegram kanalga o'tish"
+    }
+  },
+  "breadcrumbs": {
+    "home": "Bosh sahifa"
+  }
+}
