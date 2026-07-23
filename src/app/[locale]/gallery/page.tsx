@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { EmptyState } from "@/components/ui/empty-state";
 import { CtaBand } from "@/components/sections/cta-band";
+import { VideoStories } from "@/components/sections/video-stories";
 import { GalleryGrid, type FlatMediaItem } from "@/components/sections/gallery-grid";
 import { getGalleryAlbums } from "@/server/content";
 import { buildMetadata } from "@/lib/metadata";
@@ -72,6 +73,8 @@ export default async function GalleryPage({
           <EmptyState icon={Images} title={t("empty.title")} body={t("empty.body")} />
         )}
       </Section>
+
+      <VideoStories locale={locale} />
 
       <CtaBand locale={locale} />
     </>

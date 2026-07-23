@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Award, Car, Heart, Route, ShieldCheck, Target } from "lucide-react";
+import { Award, Heart, ShieldCheck, Target } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
+import { LearningProcess } from "@/components/sections/learning-process";
+import { AutodromeStory } from "@/components/sections/autodrome-story";
+import { VehicleFleet } from "@/components/sections/vehicle-fleet";
 import { CtaBand } from "@/components/sections/cta-band";
 import { getSettings } from "@/server/content";
 import { buildMetadata } from "@/lib/metadata";
@@ -53,7 +56,7 @@ export default async function AboutPage({
 
   return (
     <>
-      <section className="bg-gradient-to-b from-brand-50/60 to-white">
+      <section className="bg-linear-to-b from-brand-50/60 to-white">
         <Container className="py-14 sm:py-20">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl lg:text-5xl">
@@ -83,24 +86,11 @@ export default async function AboutPage({
         </div>
       </Section>
 
-      <Section>
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <Card className="flex flex-col gap-4 p-8">
-            <span className="grid size-12 place-items-center rounded-xl bg-brand-600 text-white">
-              <Route className="size-6" aria-hidden="true" />
-            </span>
-            <h2 className="text-xl font-bold text-ink-900">{t("autodrome.title")}</h2>
-            <p className="text-pretty text-ink-600">{t("autodrome.body")}</p>
-          </Card>
-          <Card className="flex flex-col gap-4 p-8">
-            <span className="grid size-12 place-items-center rounded-xl bg-brand-600 text-white">
-              <Car className="size-6" aria-hidden="true" />
-            </span>
-            <h2 className="text-xl font-bold text-ink-900">{t("fleet.title")}</h2>
-            <p className="text-pretty text-ink-600">{t("fleet.body")}</p>
-          </Card>
-        </div>
-      </Section>
+      <LearningProcess locale={locale} />
+
+      <AutodromeStory locale={locale} />
+
+      <VehicleFleet locale={locale} />
 
       <Section className="bg-ink-50/60">
         <SectionHeading title={t("values.title")} />

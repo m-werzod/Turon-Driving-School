@@ -8,7 +8,7 @@ const STEP_ICONS: LucideIcon[] = [UserPlus, BookOpen, Route, Car, Award];
 
 /**
  * "How training works" — reuses the category-detail process copy (same
- * five stages apply platform-wide) so the homepage tells the same story
+ * five stages apply platform-wide) so this section tells the same story
  * without duplicating translation content.
  */
 export async function LearningProcess({ locale }: { locale: Locale }) {

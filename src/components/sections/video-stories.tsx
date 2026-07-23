@@ -35,7 +35,7 @@ export async function VideoStories({ locale }: { locale: Locale }) {
           {t("title")}
         </h2>
         <p className="text-pretty text-base text-white/70 sm:text-lg">{t("subtitle")}</p>
-        <Link href="/gallery" className={buttonClasses({ variant: "glass", size: "lg", className: "mt-3" })}>
+        <Link href="/register" className={buttonClasses({ variant: "glass", size: "lg", className: "mt-3" })}>
           {t("cta")}
         </Link>
       </div>

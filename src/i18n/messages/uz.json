@@ -103,7 +103,7 @@
     "videoStories": {
       "title": "Bitiruvchilarimiz nima deydi",
       "subtitle": "Bitiruv kunlaridan real lavhalar — minglab o'quvchilarimiz allaqachon guvohnoma sohibi.",
-      "cta": "Barcha videolarni ko'rish"
+      "cta": "Ro'yxatdan o'tish"
     },
     "why": {
       "eyebrow": "Afzalliklarimiz",
@@ -315,14 +315,6 @@
       "branches": "Filiallar",
       "graduates": "Bitiruvchilar",
       "years": "Yillik tajriba"
-    },
-    "autodrome": {
-      "title": "O'z avtodromimiz",
-      "body": "Buloqdagi avtodromimizda imtihonning barcha elementlari — estakada, parallel parkovka, burilishlar — real imtihon sharoitida mashq qilinadi. O'quvchilarimiz imtihonga notanish maydonchaga emas, o'zi bilgan muhitga kiradi."
-    },
-    "fleet": {
-      "title": "Transport parkimiz",
-      "body": "Yengil avtomobillardan yuk mashinalari va avtobusgacha — barcha toifalar uchun texnik soz, zamonaviy o'quv transporti."
     },
     "values": {
       "title": "Qadriyatlarimiz",

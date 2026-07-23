@@ -9,12 +9,7 @@ import { Accordion } from "@/components/ui/accordion";
 import { Hero } from "@/components/sections/hero";
 import { PromoBand } from "@/components/sections/promo-band";
 import { WhyGrid } from "@/components/sections/why-grid";
-import { SuccessStory } from "@/components/sections/success-story";
 import { CategoryCard } from "@/components/sections/category-card";
-import { LearningProcess } from "@/components/sections/learning-process";
-import { AutodromeStory } from "@/components/sections/autodrome-story";
-import { VehicleFleet } from "@/components/sections/vehicle-fleet";
-import { VideoStories } from "@/components/sections/video-stories";
 import { BranchCard } from "@/components/sections/branch-card";
 import { CtaBand } from "@/components/sections/cta-band";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -44,9 +39,12 @@ export async function generateMetadata({
 }
 
 /**
- * Home storytelling flow: Hero → Why → Student success → Categories →
- * Learning process → Autodrome → Fleet → Video stories → Branches → FAQ →
- * CTA. Testimonials are intentionally omitted — content/testimonials.ts is
+ * Home is deliberately a short funnel — Hero → Why → Categories → Express →
+ * Branches → FAQ → CTA — not a scroll-forever brochure. The deeper
+ * storytelling sections (student success, learning process, autodrome,
+ * fleet, video stories) live on /results, /about and /gallery instead,
+ * where they're contextually at home and don't bloat the landing page.
+ * Testimonials are intentionally omitted — content/testimonials.ts is
  * still empty (no real quotes collected yet) and this build doesn't
  * fabricate customer testimonials; the section reappears automatically once
  * real ones are added, same as the FAQ/results empty-state pattern.
@@ -74,8 +72,6 @@ export default async function HomePage({
       <PromoBand />
 
       <WhyGrid locale={locale} />
-
-      <SuccessStory locale={locale} />
 
       <Section>
         <SectionHeading
@@ -127,14 +123,6 @@ export default async function HomePage({
           </div>
         </div>
       </Section>
-
-      <LearningProcess locale={locale} />
-
-      <AutodromeStory locale={locale} />
-
-      <VehicleFleet locale={locale} />
-
-      <VideoStories locale={locale} />
 
       <Section className="bg-ink-50/70">
         <SectionHeading eyebrow={t("branches.title")} title={t("branches.title")} lead={t("branches.subtitle")} />

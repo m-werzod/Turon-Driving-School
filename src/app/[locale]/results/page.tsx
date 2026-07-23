@@ -5,6 +5,7 @@ import { Section, SectionHeading } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { Reveal } from "@/components/ui/reveal";
 import { EmptyState } from "@/components/ui/empty-state";
+import { SuccessStory } from "@/components/sections/success-story";
 import { CtaBand } from "@/components/sections/cta-band";
 import { getBranches, getResultPosts, getSettings } from "@/server/content";
 import { buildMetadata } from "@/lib/metadata";
@@ -104,6 +105,8 @@ export default async function ResultsPage({
           </div>
         )}
       </Section>
+
+      <SuccessStory locale={locale} />
 
       <CtaBand locale={locale} />
     </>
