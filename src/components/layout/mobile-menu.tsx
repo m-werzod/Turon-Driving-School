@@ -162,27 +162,18 @@ export function MobileMenu({
           </ul>
         </nav>
 
-        <div className="border-t border-ink-100 px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-3">
-          <Link
-            href="/register"
-            onClick={onClose}
-            className={buttonClasses({ variant: "primary", size: "lg", className: "w-full" })}
-          >
-            {t("register")}
-          </Link>
-          <div className="mt-3 flex flex-col gap-1">
-            {data.phones.map((phone) => (
-              <a
-                key={phone.number}
-                href={telHref(phone.number)}
-                className="inline-flex items-center gap-2 py-1.5 text-sm font-semibold text-ink-800"
-              >
-                <Phone className="size-4 shrink-0 text-brand-600" aria-hidden="true" />
-                {formatUzPhone(phone.number)}
-              </a>
-            ))}
-          </div>
-          <div className="mt-3 flex items-center gap-3">
+        <div className="flex flex-col gap-4 border-t border-ink-100 px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-4">
+          {data.phones[0] ? (
+            <a
+              href={telHref(data.phones[0].number)}
+              className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-control bg-ink-50 text-base font-semibold text-ink-800 ring-1 ring-inset ring-ink-200 active:bg-ink-100"
+            >
+              <Phone className="size-4.5 shrink-0 text-accent-500" aria-hidden="true" />
+              {formatUzPhone(data.phones[0].number)}
+            </a>
+          ) : null}
+
+          <div className="flex items-center justify-center gap-3">
             <LanguageSwitcher label={tHeader("languageLabel")} />
             <a
               href={data.telegramUrl}
@@ -203,6 +194,14 @@ export function MobileMenu({
               <InstagramIcon className="size-7" />
             </a>
           </div>
+
+          <Link
+            href="/register"
+            onClick={onClose}
+            className={buttonClasses({ variant: "primary", size: "lg", className: "w-full" })}
+          >
+            {t("register")}
+          </Link>
         </div>
       </div>
     </div>
