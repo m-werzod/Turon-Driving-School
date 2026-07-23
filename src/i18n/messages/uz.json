@@ -89,7 +89,10 @@
     },
     "categories": {
       "title": "Haydovchilik toifalari",
-      "subtitle": "O'zingizga mos yo'nalishni tanlang — narxlar va muddatlar har bir sahifada aniq ko'rsatilgan."
+      "subtitle": "O'zingizga mos yo'nalishni tanlang — narxlar va muddatlar har bir sahifada aniq ko'rsatilgan.",
+      "cardHeading": "7 ta toifa — bitta joyda",
+      "cardBody": "A dan D gacha barcha toifalar: narxlar, muddatlar va shartlar bitta sahifada aniq ko'rsatilgan.",
+      "cta": "Barcha toifalarni ko'rish"
     },
     "process": {
       "eyebrow": "Jarayon",

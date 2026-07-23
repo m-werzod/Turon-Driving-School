@@ -21,8 +21,8 @@ export const settings: SiteSettings = {
       label: { uz: "Qabul bo'limi", ru: "Приёмная" },
     },
   ],
-  telegramUrl: "https://t.me/turon_avtomaktab",
-  instagramUrl: "https://instagram.com/turon_avtomaktab",
+  telegramUrl: "https://t.me/AVTOMAKTABTURON",
+  instagramUrl: "https://www.instagram.com/avtomaktab_turon/",
   hours: {
     uz: "Dushanba – shanba, 09:00 – 18:00",
     ru: "Понедельник – суббота, 09:00 – 18:00",

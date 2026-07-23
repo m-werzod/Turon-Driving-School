@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, LayoutGrid } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -9,7 +9,6 @@ import { Accordion } from "@/components/ui/accordion";
 import { Hero } from "@/components/sections/hero";
 import { PromoBand } from "@/components/sections/promo-band";
 import { WhyGrid } from "@/components/sections/why-grid";
-import { CategoryCard } from "@/components/sections/category-card";
 import { BranchCard } from "@/components/sections/branch-card";
 import { CtaBand } from "@/components/sections/cta-band";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -20,6 +19,8 @@ import {
 } from "@/server/content";
 import { buildMetadata } from "@/lib/metadata";
 import { websiteSchema } from "@/lib/schema";
+import { formatUzs } from "@/lib/format";
+import { activePromo } from "@/lib/promo";
 import type { Locale } from "@/i18n/routing";
 import type { ContentLocale } from "@/content/types";
 
@@ -58,13 +59,20 @@ export default async function HomePage({
   setRequestLocale(locale);
   const contentLocale = locale as ContentLocale;
 
-  const [categories, branches, faq, t, tExpress] = await Promise.all([
+  const [categories, branches, faq, t, tExpress, tCommon] = await Promise.all([
     getCategories(),
     getBranches(),
     getFeaturedFaqItems(),
     getTranslations({ locale, namespace: "home" }),
     getTranslations({ locale, namespace: "home.express" }),
+    getTranslations({ locale, namespace: "common" }),
   ]);
+
+  const cheapestPrice = categories.reduce((min, category) => {
+    const promo = activePromo(category.promo);
+    const price = promo ? promo.price : category.basePrice;
+    return price < min ? price : min;
+  }, Infinity);
 
   return (
     <>
@@ -79,22 +87,55 @@ export default async function HomePage({
           title={t("categories.title")}
           lead={t("categories.subtitle")}
         />
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category, index) => (
-            <Reveal key={category.slug} delay={(index % 3) * 60}>
-              <CategoryCard category={category} />
-            </Reveal>
-          ))}
-        </div>
-        <div className="mt-10 flex justify-center">
+        <Reveal className="mt-14">
           <Link
             href="/categories"
-            className={buttonClasses({ variant: "secondary", size: "lg" })}
+            className="group relative flex flex-col gap-8 overflow-hidden rounded-card bg-white p-8 shadow-(--shadow-card) ring-1 ring-inset ring-ink-100 transition-shadow duration-300 hover:shadow-(--shadow-card-hover) sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:p-12"
           >
-            {t("categories.title")}
-            <ArrowRight className="size-5" aria-hidden="true" />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-20 -top-20 size-72 rounded-full bg-brand-50 blur-3xl"
+            />
+            <div className="relative flex flex-col gap-5">
+              <div className="flex flex-wrap gap-2">
+                {categories.map((category) => (
+                  <span
+                    key={category.slug}
+                    className="grid size-9 place-items-center rounded-lg bg-brand-900 text-xs font-black text-white"
+                  >
+                    {category.code}
+                  </span>
+                ))}
+              </div>
+              <div>
+                <h3 className="font-display text-xl font-bold text-ink-900 sm:text-2xl">
+                  {t("categories.cardHeading")}
+                </h3>
+                <p className="mt-2 max-w-md text-pretty text-sm text-ink-600 sm:text-base">
+                  {t("categories.cardBody")}
+                </p>
+              </div>
+              <p className="font-display text-lg font-extrabold text-ink-900">
+                {tCommon("priceFrom", { price: formatUzs(cheapestPrice, contentLocale) })}
+              </p>
+            </div>
+
+            <span
+              className={buttonClasses({
+                variant: "primary",
+                size: "lg",
+                className: "relative shrink-0",
+              })}
+            >
+              <LayoutGrid className="size-5" aria-hidden="true" />
+              {t("categories.cta")}
+              <ArrowUpRight
+                className="size-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                aria-hidden="true"
+              />
+            </span>
           </Link>
-        </div>
+        </Reveal>
       </Section>
 
       {/* Express callout — high-urgency failed-exam segment (F-06) */}
