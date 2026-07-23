@@ -78,17 +78,25 @@ export async function Hero({ locale }: { locale: Locale }) {
             icon={MapPin}
             value={String(settings.counters.branches)}
             label={t("statBranchesLabel")}
+            href="/branches"
           />
-          <StatCard icon={Route} value={t("statAutodromeValue")} label={t("statAutodromeLabel")} />
+          <StatCard
+            icon={Route}
+            value={t("statAutodromeValue")}
+            label={t("statAutodromeLabel")}
+            href={{ pathname: "/branches/[slug]", params: { slug: "buloq-avtodrom" } }}
+          />
           <StatCard
             icon={GraduationCap}
             value={`${settings.counters.graduates.toLocaleString("ru-RU")}+`}
             label={t("statGraduatesLabel")}
+            href="/results"
           />
           <StatCard
             icon={ShieldCheck}
             value={`${settings.counters.yearsActive}+`}
             label={t("statYearsLabel")}
+            href="/about"
           />
         </div>
       </Container>
