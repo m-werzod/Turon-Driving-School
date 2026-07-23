@@ -2,7 +2,6 @@ import { Clock, MapPin, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "./logo";
-import { LanguageSwitcher } from "./language-switcher";
 import { TelegramIcon, InstagramIcon } from "@/components/ui/brand-icons";
 import { FOOTER_PAGE_LINKS, type FooterData } from "./nav-data";
 import { formatUzPhone, telHref } from "@/lib/phone";
@@ -122,15 +121,12 @@ export function SiteFooter({ data }: { data: FooterData }) {
               </p>
             ) : null}
           </div>
-          <div className="flex items-center gap-4">
-            <Link
-              href="/privacy"
-              className="rounded text-sm text-white/40 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
-            >
-              {t("nav.privacy")}
-            </Link>
-            <LanguageSwitcher label={t("header.languageLabel")} tone="light" />
-          </div>
+          <Link
+            href="/privacy"
+            className="rounded text-sm text-white/40 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
+          >
+            {t("nav.privacy")}
+          </Link>
         </div>
       </div>
     </footer>

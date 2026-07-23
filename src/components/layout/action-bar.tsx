@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Phone, UserPlus } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -11,8 +11,10 @@ import { cn } from "@/lib/cn";
 
 /**
  * Sticky mobile action bar (TZ §5.3) — the site's highest-leverage conversion
- * element. Two actions: call and register. Appears after the first viewport;
- * hides while a lead form is on screen (forms tag themselves with
+ * element. Two actions: call and register. Appears once past the first
+ * viewport, but only while scrolling up (same show/hide-on-direction
+ * behavior as the header) so it doesn't sit over content while reading down
+ * the page; hides while a lead form is on screen (forms tag themselves with
  * data-lead-form, observed here) so it never covers the very form it points
  * to. Respects safe-area insets. Mobile only.
  */
@@ -21,10 +23,14 @@ export function StickyActionBar({ phones }: { phones: NavPhone[] }) {
   const [visible, setVisible] = useState(false);
   const [formOnScreen, setFormOnScreen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
+  const lastScroll = useRef(0);
 
   useEffect(() => {
     function onScroll() {
-      setVisible(window.scrollY > window.innerHeight * 0.8);
+      const y = window.scrollY;
+      const scrollingDown = y > lastScroll.current;
+      setVisible(y > window.innerHeight * 0.8 && !scrollingDown);
+      lastScroll.current = y;
     }
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
