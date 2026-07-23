@@ -9,9 +9,12 @@ import { Accordion } from "@/components/ui/accordion";
 import { Hero } from "@/components/sections/hero";
 import { PromoBand } from "@/components/sections/promo-band";
 import { WhyGrid } from "@/components/sections/why-grid";
-import { AutodromeStory } from "@/components/sections/autodrome-story";
 import { SuccessStory } from "@/components/sections/success-story";
 import { CategoryCard } from "@/components/sections/category-card";
+import { LearningProcess } from "@/components/sections/learning-process";
+import { AutodromeStory } from "@/components/sections/autodrome-story";
+import { VehicleFleet } from "@/components/sections/vehicle-fleet";
+import { VideoStories } from "@/components/sections/video-stories";
 import { BranchCard } from "@/components/sections/branch-card";
 import { CtaBand } from "@/components/sections/cta-band";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -40,6 +43,14 @@ export async function generateMetadata({
   });
 }
 
+/**
+ * Home storytelling flow: Hero → Why → Student success → Categories →
+ * Learning process → Autodrome → Fleet → Video stories → Branches → FAQ →
+ * CTA. Testimonials are intentionally omitted — content/testimonials.ts is
+ * still empty (no real quotes collected yet) and this build doesn't
+ * fabricate customer testimonials; the section reappears automatically once
+ * real ones are added, same as the FAQ/results empty-state pattern.
+ */
 export default async function HomePage({
   params,
 }: {
@@ -61,6 +72,10 @@ export default async function HomePage({
     <>
       <Hero locale={locale} />
       <PromoBand />
+
+      <WhyGrid locale={locale} />
+
+      <SuccessStory locale={locale} />
 
       <Section>
         <SectionHeading
@@ -86,14 +101,8 @@ export default async function HomePage({
         </div>
       </Section>
 
-      <AutodromeStory locale={locale} />
-
-      <WhyGrid locale={locale} />
-
-      <SuccessStory locale={locale} />
-
       {/* Express callout — high-urgency failed-exam segment (F-06) */}
-      <Section>
+      <Section className="bg-ink-50/70">
         <div className="relative isolate overflow-hidden rounded-card bg-ink-900 px-6 py-14 sm:px-12 sm:py-20">
           <div
             aria-hidden="true"
@@ -118,6 +127,14 @@ export default async function HomePage({
           </div>
         </div>
       </Section>
+
+      <LearningProcess locale={locale} />
+
+      <AutodromeStory locale={locale} />
+
+      <VehicleFleet locale={locale} />
+
+      <VideoStories locale={locale} />
 
       <Section className="bg-ink-50/70">
         <SectionHeading eyebrow={t("branches.title")} title={t("branches.title")} lead={t("branches.subtitle")} />

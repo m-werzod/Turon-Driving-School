@@ -5,26 +5,8 @@ import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { formatUzPhone, telHref } from "@/lib/phone";
+import { facilityPhoto } from "@/lib/branch-media";
 import type { Branch, ContentLocale } from "@/content/types";
-
-/**
- * Representative facility photo per branch. We don't have a photo taken at
- * each specific address, so branches rotate through real autodrome /
- * classroom / vehicle shots — authentic Turon photos, not stock imagery.
- */
-const FACILITY_PHOTOS = [
-  { src: "/assets/photos/classrooms/2.png", w: 1280, h: 960 },
-  { src: "/assets/photos/vehicles/image.png", w: 1280, h: 960 },
-  { src: "/assets/photos/classrooms/image3.png", w: 1280, h: 960 },
-  { src: "/assets/photos/vehicles/image%20copy.png", w: 1280, h: 960 },
-  { src: "/assets/photos/classrooms/image4.png", w: 1280, h: 960 },
-  { src: "/assets/photos/vehicles/image%20copy%203.png", w: 960, h: 1280 },
-];
-const AUTODROME_PHOTO = { src: "/assets/photos/autodrome/fullshown.png", w: 1024, h: 1024 };
-
-function facilityPhoto(branch: Branch, index: number) {
-  return branch.hasAutodrome ? AUTODROME_PHOTO : FACILITY_PHOTOS[index % FACILITY_PHOTOS.length];
-}
 
 /** Branch card for the hub and Home preview (TZ templates T-01/T-06). */
 export function BranchCard({ branch, index = 0 }: { branch: Branch; index?: number }) {
@@ -70,13 +52,13 @@ export function BranchCard({ branch, index = 0 }: { branch: Branch; index?: numb
           {branch.hours[locale]}
         </p>
 
-        <div className="mt-auto flex items-center justify-between gap-3 pt-6">
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-x-3 gap-y-2 pt-6">
           {phone ? (
             <a
               href={telHref(phone)}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-ink-900 transition-colors hover:text-accent-600"
+              className="inline-flex items-center gap-2 whitespace-nowrap text-sm font-semibold text-ink-900 transition-colors hover:text-accent-600"
             >
-              <Phone className="size-4 text-accent-500" aria-hidden="true" />
+              <Phone className="size-4 shrink-0 text-accent-500" aria-hidden="true" />
               {formatUzPhone(phone)}
             </a>
           ) : (

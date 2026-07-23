@@ -47,7 +47,7 @@ export function Lightbox({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-ink-950/95 p-4 backdrop-blur-xl sm:p-8"
+      className="fixed inset-0 z-100 flex items-center justify-center bg-ink-950/95 p-4 backdrop-blur-xl sm:p-8"
       onClick={onClose}
     >
       <button

@@ -10,6 +10,7 @@ import { getSettings } from "@/server/content";
 import { SiteHeader } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/footer";
 import { StickyActionBar } from "@/components/layout/action-bar";
+import { RouteTransition } from "@/components/layout/route-transition";
 import { JsonLd } from "@/components/seo/json-ld";
 import { organizationSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
@@ -58,7 +59,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <a
             href="#main"
-            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-control focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-70 focus:rounded-control focus:bg-accent-500 focus:px-4 focus:py-2 focus:text-white"
           >
             {locale === "ru" ? "К основному содержанию" : "Asosiy kontentga o'tish"}
           </a>
@@ -68,6 +69,7 @@ export default async function LocaleLayout({
           </main>
           <SiteFooter data={footerData} />
           <StickyActionBar phones={headerData.phones} />
+          <RouteTransition />
           <JsonLd data={organizationSchema(settings, typedLocale)} />
         </NextIntlClientProvider>
       </body>

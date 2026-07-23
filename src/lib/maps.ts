@@ -19,3 +19,15 @@ export function yandexMapsUrl(branch: Branch, query: string): string {
   }
   return `https://yandex.com/maps/?text=${encodeURIComponent(query)}`;
 }
+
+/**
+ * No-API-key embeddable map (the classic `output=embed` share link, distinct
+ * from the billed Maps Embed API). Falls back to a text search embed when a
+ * branch has no verified coordinates yet (docs/OPEN_ITEMS.md #11).
+ */
+export function googleMapsEmbedUrl(branch: Branch, query: string): string {
+  if (branch.geo) {
+    return `https://www.google.com/maps?q=${branch.geo.lat},${branch.geo.lng}&z=16&output=embed`;
+  }
+  return `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+}

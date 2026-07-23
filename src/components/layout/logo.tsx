@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 
 const sizes = {
   md: { box: "size-10", wordmark: "text-lg" },
-  lg: { box: "size-12 sm:size-14", wordmark: "text-xl sm:text-2xl" },
+  lg: { box: "size-11 sm:size-14 lg:size-18", wordmark: "text-xl sm:text-2xl lg:text-[1.75rem]" },
 } as const;
 
 export function Logo({

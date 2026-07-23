@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { Section } from "@/components/ui/section";
 import { buttonClasses } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
+import { LoopingVideo } from "@/components/ui/looping-video";
 import type { Locale } from "@/i18n/routing";
 
 /**
@@ -23,17 +24,12 @@ export async function AutodromeStory({ locale }: { locale: Locale }) {
           variant="left"
           className="relative aspect-4/5 sm:aspect-16/10 lg:aspect-auto lg:h-160"
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
+          <LoopingVideo
+            src="/assets/videos/showcase/autodrome-showcase.mp4"
             poster="/assets/videos/posters/vd4.jpg"
             className="absolute inset-0 h-full w-full object-cover"
-            aria-hidden="true"
-          >
-            <source src="/assets/videos/showcase/autodrome-showcase.mp4" type="video/mp4" />
-          </video>
+            controlClassName="bottom-4 right-4"
+          />
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-linear-to-t from-ink-950 via-ink-950/10 to-transparent lg:bg-linear-to-r lg:from-transparent lg:via-transparent lg:to-ink-950"

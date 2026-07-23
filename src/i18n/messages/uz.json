@@ -54,7 +54,7 @@
       "eyebrow": "Namangan viloyati • 10+ yil tajriba",
       "title": "Haydovchilik guvohnomasiga ishonchli yo'l",
       "subtitle": "Namangan viloyati bo'ylab 7 ta filial, o'z avtodromimiz va natijaga ishlaydigan tajribali instruktorlar jamoasi.",
-      "primaryCta": "Ro'yxatdan o'tish",
+      "primaryCta": "Joyingizni band qiling",
       "secondaryCta": "Narxlarni ko'rish",
       "chipBranches": "7 ta filial",
       "chipAutodrome": "O'z avtodromimiz",
@@ -91,6 +91,20 @@
     "categories": {
       "title": "Haydovchilik toifalari",
       "subtitle": "O'zingizga mos yo'nalishni tanlang — narxlar va muddatlar har bir sahifada aniq ko'rsatilgan."
+    },
+    "process": {
+      "eyebrow": "Jarayon",
+      "subtitle": "Ro'yxatdan o'tishdan guvohnoma olishgacha — har bir bosqich aniq va tushunarli."
+    },
+    "fleet": {
+      "eyebrow": "Transport parkimiz",
+      "title": "Zamonaviy o'quv avtomobillari",
+      "subtitle": "Har bir mashg'ulot texnik jihatdan sozlangan, brendlangan o'quv avtomobillarida o'tkaziladi."
+    },
+    "videoStories": {
+      "title": "Bitiruvchilarimiz nima deydi",
+      "subtitle": "Bitiruv kunlaridan real lavhalar — minglab o'quvchilarimiz allaqachon guvohnoma sohibi.",
+      "cta": "Barcha videolarni ko'rish"
     },
     "why": {
       "eyebrow": "Afzalliklarimiz",
@@ -234,6 +248,8 @@
     "openGoogle": "Google Maps'da ochish",
     "openYandex": "Yandex Maps'da ochish",
     "autodromeBadge": "Avtodrom",
+    "mapTitle": "{name} — xarita",
+    "galleryTitle": "Filial hayotidan lavhalar",
     "meta": {
       "title": "{name} | Turon Avtomaktab",
       "description": "{name}: manzil, telefon, ish vaqti va mavjud yo'nalishlar. Qo'ng'iroq qiling yoki ro'yxatdan o'ting."
