@@ -49,7 +49,7 @@ export function MobileMenu({
   }, [open, onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 lg:hidden">
+    <div className={cn("fixed inset-0 z-50 lg:hidden", !open && "pointer-events-none")}>
       {/* Backdrop */}
       <div
         onClick={onClose}

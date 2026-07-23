@@ -72,7 +72,7 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
         aria-pressed={playing}
         aria-label={playing ? "Pause background video" : "Play background video"}
         className={cn(
-          "absolute bottom-6 right-5 z-10 grid size-10 place-items-center rounded-full bg-white/10 text-white ring-1 ring-inset ring-white/20 backdrop-blur transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:bottom-8 sm:right-8",
+          "absolute bottom-6 right-5 z-20 grid size-10 place-items-center rounded-full bg-white/10 text-white ring-1 ring-inset ring-white/20 backdrop-blur transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:bottom-8 sm:right-8",
         )}
       >
         {playing ? (
