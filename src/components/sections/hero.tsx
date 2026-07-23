@@ -11,9 +11,9 @@ import type { Locale } from "@/i18n/routing";
 /**
  * Home hero (TZ template T-01, redesigned): full-bleed autodrome footage,
  * dark gradient + brand wash overlay, large display headline, dual CTA, and
- * a strip of floating glass stat cards straddling the hero/next-section
- * seam. Server-rendered copy; only the parallax video wrapper is a client
- * island.
+ * a strip of glass stat cards sitting cleanly below the video (not
+ * overlapping it). Server-rendered copy; only the parallax video wrapper is
+ * a client island.
  */
 export async function Hero({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "home.hero" });
@@ -72,7 +72,7 @@ export async function Hero({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <Container className="relative z-10 -mt-14 sm:-mt-16">
+      <Container className="relative z-10 mt-8 sm:mt-10">
         <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:justify-center sm:gap-4">
           <StatCard
             icon={MapPin}

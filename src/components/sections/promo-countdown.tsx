@@ -64,20 +64,20 @@ export function PromoCountdown({ endsOn }: { endsOn: string }) {
 
   return (
     <div className="inline-flex items-center gap-3">
-      <Timer className="size-5 text-accent-600" aria-hidden="true" />
+      <Timer className="size-5 text-white/80" aria-hidden="true" />
       <div className="flex items-center gap-1.5" role="timer" aria-live="off">
         {units.map((unit, index) => (
           <div key={unit.label} className="flex items-center gap-1.5">
-            <div className="flex min-w-11 flex-col items-center rounded-xl bg-ink-900 px-2 py-1.5">
+            <div className="flex min-w-11 flex-col items-center rounded-xl bg-ink-950/90 px-2 py-1.5 shadow-(--shadow-card)">
               <span className="font-mono text-lg font-bold tabular-nums text-white">
                 {String(unit.value).padStart(2, "0")}
               </span>
-              <span className="text-[10px] font-medium uppercase text-ink-400">
+              <span className="text-[10px] font-medium uppercase text-white/50">
                 {unit.label}
               </span>
             </div>
             {index < units.length - 1 ? (
-              <span className="text-lg font-bold text-ink-300" aria-hidden="true">
+              <span className="text-lg font-bold text-white/40" aria-hidden="true">
                 :
               </span>
             ) : null}

@@ -78,7 +78,7 @@ export function SiteFooter({ data }: { data: FooterData }) {
           {/* Quick links — deliberately short list, not every route */}
           <nav aria-label={t("footer.links")} className="lg:col-span-3">
             <h2 className="text-sm font-semibold text-white">{t("footer.links")}</h2>
-            <ul className="mt-5 flex flex-col gap-3 text-sm text-white/55">
+            <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-3 text-sm text-white/55">
               {FOOTER_PAGE_LINKS.map((href) => (
                 <li key={href}>
                   <Link

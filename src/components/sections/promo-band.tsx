@@ -1,20 +1,18 @@
 import { Sparkles } from "lucide-react";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/container";
 import { PromoCountdown } from "./promo-countdown";
 import { getCategories } from "@/server/content";
 import { activePromo } from "@/lib/promo";
-import { formatDeadline } from "@/lib/format";
-import type { ContentLocale } from "@/content/types";
 
 /**
  * Active-promo band with live countdown (TZ templates T-01/T-05). Picks the
  * soonest-ending active promo across categories. Renders nothing when no promo
  * is active — the auto-expiry contract (AF-02) means an ended promo simply
- * disappears on the next revalidation with no manual action.
+ * disappears on the next revalidation with no manual action. The countdown's
+ * own digits carry the deadline, so the copy stays free of a raw date string.
  */
 export async function PromoBand() {
-  const locale = (await getLocale()) as ContentLocale;
   const t = await getTranslations("home.promo");
   const categories = await getCategories();
 
@@ -26,23 +24,27 @@ export async function PromoBand() {
   if (!soonest) return null;
 
   return (
-    <section className="border-y border-accent-200/60 bg-accent-50">
-      <Container className="py-5">
-        <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
-          <div className="flex items-center gap-3">
-            <span className="hidden size-10 shrink-0 place-items-center rounded-xl bg-accent-500 text-white shadow-(--shadow-glow-accent) sm:grid">
+    <section className="bg-ink-50/70 py-6 sm:py-8">
+      <Container>
+        <div className="relative isolate flex flex-col items-center gap-5 overflow-hidden rounded-card bg-linear-to-r from-accent-500 to-accent-600 px-6 py-6 text-center shadow-(--shadow-glow-accent) sm:flex-row sm:justify-between sm:px-8 sm:text-left">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-white/10 blur-3xl"
+          />
+          <div className="relative flex items-center gap-3.5">
+            <span className="hidden size-11 shrink-0 place-items-center rounded-xl bg-white/15 text-white ring-1 ring-inset ring-white/25 sm:grid">
               <Sparkles className="size-5" aria-hidden="true" />
             </span>
             <div>
-              <p className="font-display text-base font-bold text-ink-900 sm:text-lg">
+              <p className="font-display text-base font-bold text-white sm:text-lg">
                 {t("title")}
               </p>
-              <p className="text-sm text-ink-600">
-                {t("subtitle")} · {formatDeadline(soonest.endsOn, locale)}
-              </p>
+              <p className="text-sm text-white/85">{t("subtitle")}</p>
             </div>
           </div>
-          <PromoCountdown endsOn={soonest.endsOn} />
+          <div className="relative">
+            <PromoCountdown endsOn={soonest.endsOn} />
+          </div>
         </div>
       </Container>
     </section>
