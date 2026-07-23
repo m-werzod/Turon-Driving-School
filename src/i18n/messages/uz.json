@@ -313,6 +313,11 @@
     "intro": "Turon Avtomaktab — Namangan viloyatidagi yetakchi haydovchilik maktablaridan biri.",
     "storyP1": "Maqsadimiz oddiy: har bir o'quvchimizni yo'lda o'ziga ishonadigan, qoidalarni hurmat qiladigan va xavfsiz haydaydigan haydovchi qilib tayyorlash. Buning uchun kuchli nazariy baza, real amaliyot va natijaga yo'naltirilgan tizim ustida ishlaymiz.",
     "storyP2": "Bugun Turon — bu viloyat bo'ylab 7 ta filial, o'z avtodromi, zamonaviy o'quv transporti va minglab muvaffaqiyatli bitiruvchilar. Har oy yuzlab o'quvchilarimiz imtihonlardan o'tib, haydovchilik guvohnomasiga ega bo'lmoqda.",
+    "leadership": {
+      "eyebrow": "Rahbariyat",
+      "role": "Turon Avtomaktab asoschisi va direktori",
+      "body": "Turon Avtomaktab shu rahbarlik ostida faoliyat yuritadi. Maqsad — har bir o'quvchini yo'lda o'ziga ishonadigan, qoidalarni hurmat qiladigan va xavfsiz haydaydigan haydovchi qilib tayyorlash."
+    },
     "numbers": {
       "title": "Raqamlarda",
       "branches": "Filiallar",

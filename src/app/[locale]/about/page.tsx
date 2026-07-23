@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Award, Heart, ShieldCheck, Target } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/ui/container";
@@ -71,6 +72,33 @@ export default async function AboutPage({
         <div className="mx-auto max-w-3xl space-y-5 text-pretty text-ink-700 sm:text-lg">
           <p>{t("storyP1")}</p>
           <p>{t("storyP2")}</p>
+        </div>
+      </Section>
+
+      <Section className="bg-ink-50/60">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-5">
+            <div className="relative aspect-3/2 overflow-hidden rounded-card shadow-(--shadow-card-hover)">
+              <Image
+                src="/assets/photos/leadership/director.jpg"
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+          <div className="lg:col-span-7">
+            <span className="inline-flex items-center rounded-pill bg-brand-100 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-brand-700">
+              {t("leadership.eyebrow")}
+            </span>
+            <h2 className="mt-5 font-display text-2xl font-bold text-ink-900 sm:text-3xl">
+              {t("leadership.role")}
+            </h2>
+            <p className="mt-5 max-w-lg text-pretty text-ink-600 sm:text-lg">
+              {t("leadership.body")}
+            </p>
+          </div>
         </div>
       </Section>
 
