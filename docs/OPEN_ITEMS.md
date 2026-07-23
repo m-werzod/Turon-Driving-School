@@ -7,8 +7,8 @@ provided. Mirrors TZ doc 04 §13 and adds the concrete code locations affected.
 | # | Item | Status | Affected code | Severity |
 |---|---|---|---|---|
 | 1 | E category confirmation | Awaiting client | `src/content/categories.ts` — add entry; routing and template T-03 need no change (namespace reserved per doc 04 §12) | Structure-safe |
-| 2 | Authoritative price list (7 categories + 2 express packages) | Awaiting client | `src/content/categories.ts`, `src/content/express.ts` — values marked `PROVISIONAL` | **Launch blocker** |
-| 3 | Official phone set (3 vs 4 numbers) + second Telegram channel role | Awaiting client | `src/content/settings.ts` — numbers marked `PROVISIONAL` | **Launch blocker** |
+| 2 | Authoritative price list (7 categories + 2 express packages) | Received (Telegram, 2026-07-22) — wired into `src/content/categories.ts`, `src/content/express.ts`; promo `endsOn` set to 2026-07-31 per "iyul oyi oxirigacha" | Confirm the *next* promo deadline before 2026-08-01 so prices don't silently read as expired | Resolved — recheck monthly |
+| 3 | Official phone set (3 vs 4 numbers) + second Telegram channel role | Received (Telegram, 2026-07-22) — 3 numbers wired into `src/content/settings.ts`, inherited by all branches | Telegram channel role still unconfirmed | Resolved (phones) |
 | 4 | Instructor public display decision | Awaiting client | About page omits the instructors grid until confirmed (doc 04 §13.4); content model already supports it | Structure-safe |
 | 5 | License scan + number | Awaiting client | `src/content/settings.ts` `license` — About renders the license block only when present | **Launch blocker** |
 | 6 | Logo file | Received — wired into `src/components/layout/logo.tsx` (`public/assets/logo/logo.png`) | Brand color palette is still provisional and marked for replacement (TZ ToC note on doc 05) | Palette confirmation pending |

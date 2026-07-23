@@ -39,7 +39,11 @@ export interface FooterData extends HeaderData {
   licenseNumber: string | null;
 }
 
-/** Top-level pathnames used by the footer "Sahifalar" column, in IA order. */
+/**
+ * Curated footer quick-links — deliberately short (not a mirror of every
+ * route) so the mobile footer stays scannable instead of turning into a
+ * long link dump.
+ */
 export const FOOTER_PAGE_LINKS = [
   "/",
   "/categories",
@@ -47,8 +51,4 @@ export const FOOTER_PAGE_LINKS = [
   "/pricing",
   "/branches",
   "/results",
-  "/gallery",
-  "/about",
-  "/faq",
-  "/contact",
 ] as const;

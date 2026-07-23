@@ -24,18 +24,14 @@ export function SiteFooter({ data }: { data: FooterData }) {
     "/pricing": t("nav.pricing"),
     "/branches": t("nav.branches"),
     "/results": t("nav.results"),
-    "/gallery": t("nav.gallery"),
-    "/about": t("nav.about"),
-    "/faq": t("nav.faq"),
-    "/contact": t("nav.contact"),
   };
 
   return (
     <footer className="bg-ink-950">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10 lg:py-24">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Brand */}
-          <div className="lg:col-span-4">
+          <div className="sm:col-span-2 lg:col-span-5">
             <Logo label={t("nav.home")} size="lg" tone="light" />
             <p className="mt-5 max-w-xs text-pretty text-sm text-white/50">
               {t("footer.tagline")}
@@ -79,9 +75,9 @@ export function SiteFooter({ data }: { data: FooterData }) {
             </div>
           </div>
 
-          {/* Pages */}
-          <nav aria-label={t("footer.pages")} className="lg:col-span-2">
-            <h2 className="text-sm font-semibold text-white">{t("footer.pages")}</h2>
+          {/* Quick links — deliberately short list, not every route */}
+          <nav aria-label={t("footer.links")} className="lg:col-span-3">
+            <h2 className="text-sm font-semibold text-white">{t("footer.links")}</h2>
             <ul className="mt-5 flex flex-col gap-3 text-sm text-white/55">
               {FOOTER_PAGE_LINKS.map((href) => (
                 <li key={href}>
@@ -96,42 +92,17 @@ export function SiteFooter({ data }: { data: FooterData }) {
             </ul>
           </nav>
 
-          {/* Categories */}
-          <nav aria-label={t("footer.categories")} className="lg:col-span-2">
-            <h2 className="text-sm font-semibold text-white">{t("footer.categories")}</h2>
-            <ul className="mt-5 flex flex-col gap-3 text-sm text-white/55">
-              <li>
-                <Link
-                  href="/express-courses"
-                  className="rounded font-semibold text-accent-400 transition-colors hover:text-accent-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
-                >
-                  {t("nav.express")}
-                </Link>
-              </li>
-              {data.categories.map((category) => (
-                <li key={category.slug}>
-                  <Link
-                    href={{ pathname: "/categories/[slug]", params: { slug: category.slug } }}
-                    className="rounded transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
-                  >
-                    {category.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
           {/* Branches — names only; phone/hours/map live on each branch page */}
           <nav aria-label={t("footer.branches")} className="lg:col-span-4">
             <h2 className="text-sm font-semibold text-white">{t("footer.branches")}</h2>
-            <ul className="mt-5 grid grid-cols-1 gap-x-6 gap-y-3 text-sm text-white/55 sm:grid-cols-2">
+            <ul className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-white/55">
               {data.branches.map((branch) => (
                 <li key={branch.slug}>
                   <Link
                     href={{ pathname: "/branches/[slug]", params: { slug: branch.slug } }}
-                    className="inline-flex items-center gap-1.5 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
+                    className="flex items-start gap-1.5 text-pretty transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
                   >
-                    <MapPin className="size-3.5 shrink-0 text-white/30" aria-hidden="true" />
+                    <MapPin className="mt-0.5 size-3.5 shrink-0 text-white/30" aria-hidden="true" />
                     {branch.name}
                   </Link>
                 </li>

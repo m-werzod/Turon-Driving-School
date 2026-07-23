@@ -1,9 +1,9 @@
 import type { ExpressCourse } from "./types";
 
 /**
- * PROVISIONAL CONTENT — prices await the authoritative price list
- * (docs/OPEN_ITEMS.md #2). The two packages per TZ doc 04 F-06 / T-04:
- * theory prep and 1-on-1 practical autodrome sessions, targeted at the
+ * Prices and format are the real, client-provided figures (Telegram
+ * announcement, 2026-07-22). Two packages per TZ doc 04 F-06 / T-04: theory
+ * prep and 1-on-1 practical autodrome sessions, targeted at the
  * failed-exam segment and deliberately isolated from the category funnel.
  */
 export const expressCourses: ExpressCourse[] = [
@@ -36,7 +36,7 @@ export const expressCourses: ExpressCourse[] = [
       ],
     },
     duration: { uz: "10 kun", ru: "10 дней" },
-    price: 600_000,
+    price: 450_000,
   },
   {
     slug: "practice",
@@ -49,24 +49,24 @@ export const expressCourses: ExpressCourse[] = [
       ru: "Для тех, кто не сдал практический экзамен",
     },
     description: {
-      uz: "Instruktor bilan yakkama-yakka avtodrom mashg'ulotlari: aynan sizga qiyin bo'lgan elementlar ustida ishlaymiz.",
-      ru: "Индивидуальные занятия с инструктором на автодроме: отрабатываем именно те элементы, которые даются вам сложнее всего.",
+      uz: "Instruktor bilan yakkama-yakka (1/1) avtodrom mashg'ulotlari: aynan sizga qiyin bo'lgan elementlar ustida ishlaymiz — 100% kafolat bilan.",
+      ru: "Индивидуальные занятия 1/1 с инструктором на автодроме: отрабатываем именно те элементы, которые даются вам сложнее всего — с гарантией 100%.",
     },
     features: {
       uz: [
-        "Yakkama-yakka mashg'ulotlar",
+        "3 ta yakkama-yakka (1/1) mashg'ulot",
         "O'z avtodromimizda amaliyot",
         "Imtihon elementlarini maqsadli mashq qilish",
-        "Moslashuvchan jadval",
+        "100% kafolat bilan",
       ],
       ru: [
-        "Занятия один на один",
+        "3 индивидуальных занятия 1/1",
         "Практика на собственном автодроме",
         "Целевая отработка экзаменационных элементов",
-        "Гибкое расписание",
+        "Гарантия 100%",
       ],
     },
-    duration: { uz: "Moslashuvchan jadval", ru: "Гибкое расписание" },
-    price: 800_000,
+    duration: { uz: "3 mashg'ulot", ru: "3 занятия" },
+    price: 170_000,
   },
 ];

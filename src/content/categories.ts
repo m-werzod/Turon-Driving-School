@@ -1,10 +1,11 @@
 import type { Category } from "./types";
 
 /**
- * PROVISIONAL CONTENT — prices, promo deadlines, durations and age/stage
- * requirements are seed values pending the authoritative price list and the
- * client's confirmation (docs/OPEN_ITEMS.md #1, #2). Structure per TZ doc 04
- * §3.2 (7 categories; the E namespace stays reserved until confirmed).
+ * Prices are the real, client-provided July price list (Telegram
+ * announcement, 2026-07-22; promo runs through end of July). Durations and
+ * age/stage requirements remain seed values pending confirmation
+ * (docs/OPEN_ITEMS.md #1). Structure per TZ doc 04 §3.2 — 7 categories; the
+ * E namespace stays reserved until the client confirms a price for it.
  */
 export const categories: Category[] = [
   {
@@ -21,8 +22,8 @@ export const categories: Category[] = [
     },
     durationMonths: 2,
     minAge: 18,
-    basePrice: 2_600_000,
-    promo: { price: 2_100_000, endsOn: "2026-08-31" },
+    basePrice: 5_883_000,
+    promo: { price: 5_050_000, endsOn: "2026-07-31" },
     included: {
       uz: [
         "To'liq nazariy kurs — yo'l harakati qoidalari va xavfsizlik asoslari",
@@ -120,8 +121,8 @@ export const categories: Category[] = [
     },
     durationMonths: 3,
     minAge: 18,
-    basePrice: 4_200_000,
-    promo: { price: 3_500_000, endsOn: "2026-08-31" },
+    basePrice: 7_300_000,
+    promo: { price: 6_450_000, endsOn: "2026-07-31" },
     included: {
       uz: [
         "B va C toifalari uchun to'liq nazariy kurs",
@@ -207,8 +208,8 @@ export const categories: Category[] = [
     },
     durationMonths: 2.5,
     minAge: 18,
-    basePrice: 3_400_000,
-    promo: { price: 2_900_000, endsOn: "2026-08-31" },
+    basePrice: 3_200_000,
+    promo: { price: 2_850_000, endsOn: "2026-07-31" },
     included: {
       uz: [
         "To'liq nazariy kurs",
@@ -286,8 +287,8 @@ export const categories: Category[] = [
     },
     durationMonths: 1.5,
     minAge: 19,
-    basePrice: 2_900_000,
-    promo: { price: 2_500_000, endsOn: "2026-08-31" },
+    basePrice: 3_200_000,
+    promo: { price: 2_950_000, endsOn: "2026-07-31" },
     included: {
       uz: [
         "Tirkamali tarkib bilan ishlash nazariyasi",
@@ -363,8 +364,8 @@ export const categories: Category[] = [
     },
     durationMonths: 1,
     minAge: 19,
-    basePrice: 2_400_000,
-    promo: { price: 2_000_000, endsOn: "2026-08-31" },
+    basePrice: 1_725_000,
+    promo: { price: 1_450_000, endsOn: "2026-07-31" },
     included: {
       uz: [
         "Tirkama bilan ishlash nazariyasi",
@@ -440,8 +441,8 @@ export const categories: Category[] = [
     },
     durationMonths: 1.5,
     minAge: 18,
-    basePrice: 1_800_000,
-    promo: { price: 1_500_000, endsOn: "2026-08-31" },
+    basePrice: 1_725_000,
+    promo: { price: 1_450_000, endsOn: "2026-07-31" },
     included: {
       uz: [
         "To'liq nazariy kurs",
@@ -517,7 +518,8 @@ export const categories: Category[] = [
     },
     durationMonths: 2,
     minAge: 21,
-    basePrice: 4_800_000,
+    basePrice: 4_100_000,
+    promo: { price: 3_900_000, endsOn: "2026-07-31" },
     included: {
       uz: [
         "Yo'lovchi tashish nazariyasi",

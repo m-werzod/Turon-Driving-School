@@ -13,9 +13,12 @@ import { formatUzPhone, telHref } from "@/lib/phone";
 import { cn } from "@/lib/cn";
 
 /**
- * Full-screen mobile navigation overlay (TZ §5.2). Order and pinned bottom
- * block follow the spec exactly. Body scroll is locked while open; the parent
- * closes it on route change. Rendered only on mobile/tablet.
+ * Right-side mobile navigation drawer — 60% of the viewport width (capped
+ * for readability on tablets), sliding in over a blurred backdrop. Stays
+ * mounted at all times and animates via translate-x so both open and close
+ * play; `inert` keeps its contents out of the tab order while closed. Body
+ * scroll is locked while open; the parent closes it on route change.
+ * Rendered only on mobile/tablet.
  */
 export function MobileMenu({
   open,
@@ -45,143 +48,161 @@ export function MobileMenu({
     };
   }, [open, onClose]);
 
-  if (!open) return null;
-
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-white lg:hidden">
-      <div className="flex items-center justify-between border-b border-ink-100 px-5 py-3">
-        <Logo label={t("home")} onClick={onClose} />
-        <div className="flex items-center gap-2">
-          <LanguageSwitcher label={tHeader("languageLabel")} />
+    <div className="fixed inset-0 z-50 lg:hidden">
+      {/* Backdrop */}
+      <div
+        onClick={onClose}
+        aria-hidden="true"
+        className={cn(
+          "absolute inset-0 bg-ink-950/55 backdrop-blur-sm transition-opacity duration-300 ease-premium",
+          open ? "opacity-100" : "pointer-events-none opacity-0",
+        )}
+      />
+
+      {/* Drawer panel — 60vw, floored at 280px, capped at 24rem */}
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={tHeader("openMenu")}
+        inert={!open}
+        className={cn(
+          "absolute inset-y-0 right-0 flex h-full w-[60vw] min-w-[280px] max-w-sm flex-col bg-white shadow-2xl transition-transform duration-300 ease-premium",
+          open ? "translate-x-0" : "translate-x-full",
+        )}
+      >
+        <div className="flex items-center justify-between gap-2 border-b border-ink-100 px-4 py-3">
+          <Logo label={t("home")} onClick={onClose} />
           <button
             type="button"
             onClick={onClose}
             aria-label={tHeader("closeMenu")}
-            className="grid size-11 place-items-center rounded-lg text-ink-700 hover:bg-ink-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
+            className="grid size-10 shrink-0 place-items-center rounded-lg text-ink-700 hover:bg-ink-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
           >
-            <X className="size-6" aria-hidden="true" />
+            <X className="size-5" aria-hidden="true" />
           </button>
         </div>
-      </div>
 
-      <nav
-        aria-label={tHeader("openMenu")}
-        className="flex-1 overflow-y-auto overscroll-contain px-4 py-4"
-      >
-        <ul className="flex flex-col gap-1 text-lg font-semibold text-ink-900">
-          <li>
-            <ExpandableGroup
-              label={t("categories")}
-              isOpen={expanded === "categories"}
-              onToggle={() =>
-                setExpanded(expanded === "categories" ? null : "categories")
-              }
-            >
-              <MenuLink href="/express-courses" onClick={onClose} highlight>
-                {t("express")}
-              </MenuLink>
-              {data.categories.map((category) => (
-                <MenuLink
-                  key={category.slug}
-                  href={{ pathname: "/categories/[slug]", params: { slug: category.slug } }}
-                  onClick={onClose}
-                >
-                  {category.name}
-                </MenuLink>
-              ))}
-            </ExpandableGroup>
-          </li>
-          <li>
-            <MenuTopLink href="/pricing" onClick={onClose}>
-              {t("pricing")}
-            </MenuTopLink>
-          </li>
-          <li>
-            <ExpandableGroup
-              label={t("branches")}
-              isOpen={expanded === "branches"}
-              onToggle={() =>
-                setExpanded(expanded === "branches" ? null : "branches")
-              }
-            >
-              {data.branches.map((branch) => (
-                <MenuLink
-                  key={branch.slug}
-                  href={{ pathname: "/branches/[slug]", params: { slug: branch.slug } }}
-                  onClick={onClose}
-                >
-                  {branch.name}
-                </MenuLink>
-              ))}
-            </ExpandableGroup>
-          </li>
-          <li>
-            <MenuTopLink href="/results" onClick={onClose}>
-              {t("results")}
-            </MenuTopLink>
-          </li>
-          <li>
-            <MenuTopLink href="/gallery" onClick={onClose}>
-              {t("gallery")}
-            </MenuTopLink>
-          </li>
-          <li>
-            <MenuTopLink href="/about" onClick={onClose}>
-              {t("about")}
-            </MenuTopLink>
-          </li>
-          <li>
-            <MenuTopLink href="/faq" onClick={onClose}>
-              {t("faq")}
-            </MenuTopLink>
-          </li>
-          <li>
-            <MenuTopLink href="/contact" onClick={onClose}>
-              {t("contact")}
-            </MenuTopLink>
-          </li>
-        </ul>
-      </nav>
-
-      <div className="border-t border-ink-100 px-5 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-4">
-        <Link
-          href="/register"
-          onClick={onClose}
-          className={buttonClasses({ variant: "primary", size: "lg", className: "w-full" })}
+        <nav
+          aria-label={tHeader("openMenu")}
+          className="flex-1 overflow-y-auto overscroll-contain px-3 py-3"
         >
-          {t("register")}
-        </Link>
-        <div className="mt-3 flex flex-col gap-1">
-          {data.phones.map((phone) => (
+          <ul className="flex flex-col gap-1 text-base font-semibold text-ink-900">
+            <li>
+              <ExpandableGroup
+                label={t("categories")}
+                isOpen={expanded === "categories"}
+                onToggle={() =>
+                  setExpanded(expanded === "categories" ? null : "categories")
+                }
+              >
+                <MenuLink href="/express-courses" onClick={onClose} highlight>
+                  {t("express")}
+                </MenuLink>
+                {data.categories.map((category) => (
+                  <MenuLink
+                    key={category.slug}
+                    href={{ pathname: "/categories/[slug]", params: { slug: category.slug } }}
+                    onClick={onClose}
+                  >
+                    {category.name}
+                  </MenuLink>
+                ))}
+              </ExpandableGroup>
+            </li>
+            <li>
+              <MenuTopLink href="/pricing" onClick={onClose}>
+                {t("pricing")}
+              </MenuTopLink>
+            </li>
+            <li>
+              <ExpandableGroup
+                label={t("branches")}
+                isOpen={expanded === "branches"}
+                onToggle={() =>
+                  setExpanded(expanded === "branches" ? null : "branches")
+                }
+              >
+                {data.branches.map((branch) => (
+                  <MenuLink
+                    key={branch.slug}
+                    href={{ pathname: "/branches/[slug]", params: { slug: branch.slug } }}
+                    onClick={onClose}
+                  >
+                    {branch.name}
+                  </MenuLink>
+                ))}
+              </ExpandableGroup>
+            </li>
+            <li>
+              <MenuTopLink href="/results" onClick={onClose}>
+                {t("results")}
+              </MenuTopLink>
+            </li>
+            <li>
+              <MenuTopLink href="/gallery" onClick={onClose}>
+                {t("gallery")}
+              </MenuTopLink>
+            </li>
+            <li>
+              <MenuTopLink href="/about" onClick={onClose}>
+                {t("about")}
+              </MenuTopLink>
+            </li>
+            <li>
+              <MenuTopLink href="/faq" onClick={onClose}>
+                {t("faq")}
+              </MenuTopLink>
+            </li>
+            <li>
+              <MenuTopLink href="/contact" onClick={onClose}>
+                {t("contact")}
+              </MenuTopLink>
+            </li>
+          </ul>
+        </nav>
+
+        <div className="border-t border-ink-100 px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-3">
+          <Link
+            href="/register"
+            onClick={onClose}
+            className={buttonClasses({ variant: "primary", size: "lg", className: "w-full" })}
+          >
+            {t("register")}
+          </Link>
+          <div className="mt-3 flex flex-col gap-1">
+            {data.phones.map((phone) => (
+              <a
+                key={phone.number}
+                href={telHref(phone.number)}
+                className="inline-flex items-center gap-2 py-1.5 text-sm font-semibold text-ink-800"
+              >
+                <Phone className="size-4 shrink-0 text-brand-600" aria-hidden="true" />
+                {formatUzPhone(phone.number)}
+              </a>
+            ))}
+          </div>
+          <div className="mt-3 flex items-center gap-3">
+            <LanguageSwitcher label={tHeader("languageLabel")} />
             <a
-              key={phone.number}
-              href={telHref(phone.number)}
-              className="inline-flex items-center gap-2 py-2 text-base font-semibold text-ink-800"
+              href={data.telegramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Telegram"
+              className="rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
             >
-              <Phone className="size-4 text-brand-600" aria-hidden="true" />
-              {formatUzPhone(phone.number)}
+              <TelegramIcon className="size-7" />
             </a>
-          ))}
-        </div>
-        <div className="mt-3 flex items-center gap-3">
-          <a
-            href={data.telegramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Telegram"
-            className="rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
-          >
-            <TelegramIcon className="size-8" />
-          </a>
-          <a
-            href={data.instagramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
-          >
-            <InstagramIcon className="size-8" />
-          </a>
+            <a
+              href={data.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
+            >
+              <InstagramIcon className="size-7" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -201,7 +222,7 @@ function MenuTopLink({
     <Link
       href={href}
       onClick={onClick}
-      className="block rounded-lg px-3 py-3 hover:bg-ink-50 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-600"
+      className="block rounded-lg px-3 py-2.5 hover:bg-ink-50 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-600"
     >
       {children}
     </Link>
@@ -225,7 +246,7 @@ function ExpandableGroup({
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left hover:bg-ink-50 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-600"
+        className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left hover:bg-ink-50 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-600"
       >
         {label}
         <ChevronDown
@@ -234,7 +255,7 @@ function ExpandableGroup({
         />
       </button>
       {isOpen ? (
-        <ul className="mb-1 ml-3 flex flex-col gap-0.5 border-l border-ink-100 pl-3 text-base font-medium text-ink-700">
+        <ul className="mb-1 ml-2.5 flex flex-col gap-0.5 border-l border-ink-100 pl-2.5 text-sm font-medium text-ink-700">
           {children}
         </ul>
       ) : null}
@@ -259,7 +280,7 @@ function MenuLink({
         href={href}
         onClick={onClick}
         className={cn(
-          "block rounded-lg px-3 py-2.5 hover:bg-ink-50 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-600",
+          "block rounded-lg px-3 py-2 hover:bg-ink-50 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-600",
           highlight && "font-semibold text-brand-700",
         )}
       >

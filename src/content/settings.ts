@@ -1,15 +1,23 @@
 import type { SiteSettings } from "./types";
 
 /**
- * PROVISIONAL CONTENT — phone numbers, counters and license await the
- * authoritative client input (docs/OPEN_ITEMS.md #3, #5). The phone number
- * below is a structural stand-in and MUST be replaced before launch.
+ * Counters and license are still provisional pending the authoritative
+ * client input (docs/OPEN_ITEMS.md #5). Phone numbers below are the real,
+ * client-provided registration lines (Telegram announcement, 2026-07-22).
  */
 export const settings: SiteSettings = {
   brandName: "Turon Avtomaktab",
   phones: [
     {
-      number: "+998900000000",
+      number: "+998552523737",
+      label: { uz: "Qabul bo'limi", ru: "Приёмная" },
+    },
+    {
+      number: "+998552553737",
+      label: { uz: "Qabul bo'limi", ru: "Приёмная" },
+    },
+    {
+      number: "+998911653737",
       label: { uz: "Qabul bo'limi", ru: "Приёмная" },
     },
   ],

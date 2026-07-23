@@ -10,6 +10,7 @@ import { getSettings } from "@/server/content";
 import { SiteHeader } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/footer";
 import { StickyActionBar } from "@/components/layout/action-bar";
+import { FloatingCallButton } from "@/components/layout/floating-call-button";
 import { RouteTransition } from "@/components/layout/route-transition";
 import { JsonLd } from "@/components/seo/json-ld";
 import { organizationSchema } from "@/lib/schema";
@@ -69,6 +70,7 @@ export default async function LocaleLayout({
           </main>
           <SiteFooter data={footerData} />
           <StickyActionBar phones={headerData.phones} />
+          <FloatingCallButton phones={headerData.phones} />
           <RouteTransition />
           <JsonLd data={organizationSchema(settings, typedLocale)} />
         </NextIntlClientProvider>
