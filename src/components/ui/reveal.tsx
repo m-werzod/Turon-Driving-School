@@ -14,11 +14,13 @@ export function Reveal({
   children,
   as: Tag = "div",
   delay = 0,
+  variant,
   className,
 }: {
   children: ReactNode;
   as?: ElementType;
   delay?: number;
+  variant?: "scale" | "left" | "right";
   className?: string;
 }) {
   const ref = useRef<HTMLElement>(null);
@@ -47,7 +49,7 @@ export function Reveal({
   return (
     <Tag
       ref={ref}
-      data-reveal=""
+      data-reveal={variant ?? ""}
       data-revealed={revealed ? "true" : "false"}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
       className={className && cn(className)}

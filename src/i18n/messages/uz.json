@@ -51,13 +51,38 @@
       "description": "7 ta filial, o'z avtodromi va tajribali instruktorlar. A, B, BC, C, CE, BE, D toifalari bo'yicha haydovchilik kurslari. Hoziroq ro'yxatdan o'ting."
     },
     "hero": {
+      "eyebrow": "Namangan viloyati • 10+ yil tajriba",
       "title": "Haydovchilik guvohnomasiga ishonchli yo'l",
       "subtitle": "Namangan viloyati bo'ylab 7 ta filial, o'z avtodromimiz va natijaga ishlaydigan tajribali instruktorlar jamoasi.",
       "primaryCta": "Ro'yxatdan o'tish",
       "secondaryCta": "Narxlarni ko'rish",
       "chipBranches": "7 ta filial",
       "chipAutodrome": "O'z avtodromimiz",
-      "chipGraduates": "{count}+ bitiruvchi"
+      "chipGraduates": "{count}+ bitiruvchi",
+      "chipYears": "{years}+ yil tajriba",
+      "statBranchesLabel": "Filial",
+      "statAutodromeValue": "Avtodrom",
+      "statAutodromeLabel": "Xavfsiz mashg'ulot",
+      "statGraduatesLabel": "Bitiruvchi",
+      "statYearsLabel": "Yil tajriba"
+    },
+    "autodrome": {
+      "eyebrow": "O'z avtodromimiz",
+      "title": "Imtihon kunidek haqiqiy sharoitda mashq qiling",
+      "body": "Har bir filialimizda emas, balki maxsus qurilgan avtodromda — davlat imtihonidagi barcha elementlarni xotirjam va xavfsiz mashq qilasiz. Halqa harakati, garajga orqa yurish, estakada, parallel parkovka — barchasi haqiqiy razmetka bilan.",
+      "bullet1": "Davlat imtihoni razmetkasiga mos maydon",
+      "bullet2": "Har bir o'quvchiga yetarlicha amaliyot vaqti",
+      "bullet3": "Tajribali instruktorlar nazorati ostida",
+      "cta": "Avtodromni ko'rish"
+    },
+    "success": {
+      "eyebrow": "Bitiruvchilarimiz",
+      "title": "Natijalar so'zlardan ko'ra ko'proq gapiradi",
+      "subtitle": "10 yildan ortiq vaqt davomida minglab o'quvchilarimiz guvohnoma sohibi bo'ldi. Ularning bir qismi — quyida.",
+      "statGraduates": "Bitiruvchi",
+      "statBranches": "Filial",
+      "statYears": "Yil tajriba",
+      "cta": "Galereyada ko'rish"
     },
     "promo": {
       "title": "Amaldagi aksiya",
@@ -68,6 +93,7 @@
       "subtitle": "O'zingizga mos yo'nalishni tanlang — narxlar va muddatlar har bir sahifada aniq ko'rsatilgan."
     },
     "why": {
+      "eyebrow": "Afzalliklarimiz",
       "title": "Nega aynan Turon?",
       "autodromeTitle": "O'z avtodromimiz",
       "autodromeBody": "Imtihon elementlarini haqiqiy avtodromda, imtihondagidek sharoitda mashq qilasiz.",
@@ -238,6 +264,23 @@
     },
     "title": "Galereya",
     "intro": "Avtodrom, mashg'ulotlar, transport parki va bitiruvchilarimiz — hammasi real kadrlarda.",
+    "itemCount": "{count} ta material",
+    "filters": {
+      "all": "Barchasi",
+      "autodrome": "Avtodrom",
+      "classroom": "Nazariy darslar",
+      "graduation": "Bitiruv",
+      "vehicles": "Avtomobillar",
+      "certificates": "Sertifikatlar",
+      "students": "O'quvchilar",
+      "instructors": "Instruktorlar",
+      "events": "Tadbirlar"
+    },
+    "lightbox": {
+      "close": "Yopish",
+      "next": "Keyingisi",
+      "prev": "Oldingisi"
+    },
     "empty": {
       "title": "Galereya tayyorlanmoqda",
       "body": "Tez orada bu yerda avtodrom, mashg'ulotlar va bitiruvchilarimiz suratlari joylanadi. Yangiliklarni Telegram kanalimizda kuzatib boring."

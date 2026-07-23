@@ -10,14 +10,17 @@ import { cn } from "@/lib/cn";
  * UZ / RU text switcher (no flags — TZ §5.1). Re-navigates the current route
  * through the localized pathname map so switching lands on the equivalent
  * page, never the homepage (§5.6). next-intl persists the choice to the
- * locale cookie honored by middleware on return visits.
+ * locale cookie honored by middleware on return visits. `tone="light"` is
+ * used while the header floats transparently over the hero video.
  */
 export function LanguageSwitcher({
   label,
   className,
+  tone = "dark",
 }: {
   label: string;
   className?: string;
+  tone?: "dark" | "light";
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -39,7 +42,8 @@ export function LanguageSwitcher({
       role="group"
       aria-label={label}
       className={cn(
-        "inline-flex items-center rounded-full bg-ink-100 p-0.5 text-sm font-semibold",
+        "inline-flex items-center rounded-pill p-0.5 text-sm font-semibold",
+        tone === "light" ? "bg-white/10 ring-1 ring-inset ring-white/15" : "bg-ink-100",
         className,
       )}
     >
@@ -52,10 +56,14 @@ export function LanguageSwitcher({
             onClick={() => switchTo(locale)}
             aria-current={isActive ? "true" : undefined}
             className={cn(
-              "rounded-full px-3 py-1 uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600",
+              "rounded-pill px-3 py-1.5 uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500",
               isActive
-                ? "bg-white text-brand-700 shadow-sm"
-                : "text-ink-500 hover:text-ink-800",
+                ? tone === "light"
+                  ? "bg-white text-ink-900 shadow-sm"
+                  : "bg-white text-accent-600 shadow-sm"
+                : tone === "light"
+                  ? "text-white/70 hover:text-white"
+                  : "text-ink-500 hover:text-ink-800",
             )}
           >
             {locale}

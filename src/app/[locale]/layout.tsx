@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Inter } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
@@ -15,9 +15,9 @@ import { organizationSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 import "../globals.css";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin", "latin-ext", "cyrillic"],
-  variable: "--font-inter",
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -53,7 +53,7 @@ export default async function LocaleLayout({
   ]);
 
   return (
-    <html lang={locale} className={inter.variable}>
+    <html lang={locale} className={manrope.variable}>
       <body className="min-h-dvh bg-white">
         <NextIntlClientProvider>
           <a

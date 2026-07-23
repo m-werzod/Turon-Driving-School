@@ -2,22 +2,32 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 
+const sizes = {
+  md: { box: "size-10", wordmark: "text-lg" },
+  lg: { box: "size-12 sm:size-14", wordmark: "text-xl sm:text-2xl" },
+} as const;
+
 export function Logo({
   label,
   className,
   onClick,
+  size = "md",
+  tone = "dark",
 }: {
   label: string;
   className?: string;
   onClick?: () => void;
+  size?: keyof typeof sizes;
+  tone?: "dark" | "light";
 }) {
+  const s = sizes[size];
   return (
     <Link
       href="/"
       onClick={onClick}
       aria-label={label}
       className={cn(
-        "inline-flex items-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600",
+        "group inline-flex items-center gap-2.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4",
         className,
       )}
     >
@@ -28,10 +38,27 @@ export function Logo({
         width={1024}
         height={1024}
         priority
-        className="size-9 rounded-lg object-contain"
+        className={cn(
+          s.box,
+          "shrink-0 rounded-xl object-contain drop-shadow-[0_4px_16px_rgb(16_19_31/0.25)] transition-transform duration-300 group-hover:scale-[1.04]",
+        )}
       />
-      <span className="text-lg font-extrabold tracking-tight text-ink-900">
-        Turon <span className="font-semibold text-ink-500">Avtomaktab</span>
+      <span
+        className={cn(
+          "font-extrabold leading-tight tracking-tight",
+          s.wordmark,
+          tone === "light" ? "text-white" : "text-ink-900",
+        )}
+      >
+        Turon{" "}
+        <span
+          className={cn(
+            "font-semibold",
+            tone === "light" ? "text-white/70" : "text-ink-500",
+          )}
+        >
+          Avtomaktab
+        </span>
       </span>
     </Link>
   );

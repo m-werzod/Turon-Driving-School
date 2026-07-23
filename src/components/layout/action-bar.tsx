@@ -53,7 +53,7 @@ export function StickyActionBar({ phones }: { phones: NavPhone[] }) {
       <div
         aria-hidden={!show}
         className={cn(
-          "fixed inset-x-0 bottom-0 z-40 border-t border-ink-200 bg-white/95 backdrop-blur transition-transform duration-300 lg:hidden",
+          "glass-light fixed inset-x-0 bottom-0 z-40 border-t border-ink-200/70 shadow-[0_-4px_20px_rgb(16_19_31/0.06)] transition-transform duration-300 lg:hidden",
           show ? "translate-y-0" : "translate-y-full",
         )}
       >
@@ -64,7 +64,7 @@ export function StickyActionBar({ phones }: { phones: NavPhone[] }) {
               tabIndex={show ? 0 : -1}
               className="inline-flex h-12 items-center justify-center gap-2 rounded-control bg-white text-sm font-semibold text-ink-800 ring-1 ring-inset ring-ink-200 active:bg-ink-100"
             >
-              <Phone className="size-5 text-brand-600" aria-hidden="true" />
+              <Phone className="size-5 text-accent-500" aria-hidden="true" />
               {t("call")}
             </a>
           ) : (
@@ -74,14 +74,14 @@ export function StickyActionBar({ phones }: { phones: NavPhone[] }) {
               tabIndex={show ? 0 : -1}
               className="inline-flex h-12 items-center justify-center gap-2 rounded-control bg-white text-sm font-semibold text-ink-800 ring-1 ring-inset ring-ink-200 active:bg-ink-100"
             >
-              <Phone className="size-5 text-brand-600" aria-hidden="true" />
+              <Phone className="size-5 text-accent-500" aria-hidden="true" />
               {t("call")}
             </button>
           )}
           <Link
             href="/register"
             tabIndex={show ? 0 : -1}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-control bg-brand-600 text-sm font-semibold text-white active:bg-brand-800"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-control bg-accent-500 text-sm font-semibold text-white active:bg-accent-700"
           >
             <UserPlus className="size-5" aria-hidden="true" />
             {t("register")}

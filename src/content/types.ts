@@ -108,9 +108,20 @@ export interface MediaItem {
   alt: Localized;
   width: number;
   height: number;
+  video?: boolean;
+  /** Poster frame shown before a video loads/plays; ignored for photos. */
+  poster?: string;
 }
 
-export type AlbumKind = "autodrome" | "classroom" | "graduation" | "vehicles";
+export type AlbumKind =
+  | "autodrome"
+  | "classroom"
+  | "graduation"
+  | "vehicles"
+  | "certificates"
+  | "students"
+  | "instructors"
+  | "events";
 
 export interface GalleryAlbum {
   id: string;

@@ -42,7 +42,7 @@ export default async function BranchesPage({
         <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {branches.map((branch, index) => (
             <Reveal key={branch.slug} delay={(index % 3) * 60}>
-              <BranchCard branch={branch} />
+              <BranchCard branch={branch} index={index} />
             </Reveal>
           ))}
         </div>

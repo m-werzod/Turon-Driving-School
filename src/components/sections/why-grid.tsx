@@ -17,17 +17,19 @@ export async function WhyGrid({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <Section className="bg-ink-50/60">
-      <SectionHeading title={t("title")} />
-      <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <Section className="bg-ink-50/70">
+      <SectionHeading eyebrow={t("eyebrow")} title={t("title")} />
+      <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((item, index) => (
-          <Reveal key={item.title} delay={index * 60}>
-            <Card className="flex h-full flex-col gap-4 p-6">
-              <span className="grid size-12 place-items-center rounded-xl bg-brand-600 text-white">
+          <Reveal key={item.title} delay={index * 90}>
+            <Card interactive className="flex h-full flex-col gap-5 p-7">
+              <span className="grid size-14 place-items-center rounded-2xl bg-brand-900 text-white shadow-(--shadow-glow-brand)">
                 <item.icon className="size-6" aria-hidden="true" />
               </span>
-              <h3 className="text-base font-bold text-ink-900">{item.title}</h3>
-              <p className="text-pretty text-sm text-ink-600">{item.body}</p>
+              <div>
+                <h3 className="font-display text-lg font-bold text-ink-900">{item.title}</h3>
+                <p className="mt-2 text-pretty text-sm text-ink-600">{item.body}</p>
+              </div>
             </Card>
           </Reveal>
         ))}

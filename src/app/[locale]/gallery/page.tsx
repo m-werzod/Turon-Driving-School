@@ -4,9 +4,11 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { EmptyState } from "@/components/ui/empty-state";
 import { CtaBand } from "@/components/sections/cta-band";
+import { GalleryGrid, type FlatMediaItem } from "@/components/sections/gallery-grid";
 import { getGalleryAlbums } from "@/server/content";
 import { buildMetadata } from "@/lib/metadata";
 import type { Locale } from "@/i18n/routing";
+import type { AlbumKind, ContentLocale } from "@/content/types";
 
 export async function generateMetadata({
   params,
@@ -30,25 +32,45 @@ export default async function GalleryPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const [albums, t] = await Promise.all([
+  const contentLocale = locale as ContentLocale;
+
+  const [albums, t, tFilters] = await Promise.all([
     getGalleryAlbums(),
     getTranslations({ locale, namespace: "galleryPage" }),
+    getTranslations({ locale, namespace: "galleryPage.filters" }),
   ]);
+
+  const items: FlatMediaItem[] = albums.flatMap((album) =>
+    album.items.map((media, index) => ({
+      id: `${album.id}-${index}`,
+      src: media.src,
+      poster: media.poster,
+      video: media.video,
+      alt: media.alt[contentLocale],
+      width: media.width,
+      height: media.height,
+      kind: album.kind,
+    })),
+  );
+
+  const kinds = Array.from(new Set(albums.map((album) => album.kind)));
+  const filterLabels = {
+    all: tFilters("all"),
+    ...Object.fromEntries(kinds.map((kind) => [kind, tFilters(kind)])),
+  } as Record<"all" | AlbumKind, string>;
 
   return (
     <>
-      <Section>
-        <SectionHeading title={t("title")} lead={t("intro")} />
-        <div className="mt-12">
-          {albums.length > 0 ? (
-            // The lightbox gallery grid ships with the media milestone once
-            // curated assets exist (docs/OPEN_ITEMS.md #8); until then the
-            // designed empty state stands in.
-            <p className="text-center text-ink-500">{albums.length}</p>
-          ) : (
-            <EmptyState icon={Images} title={t("empty.title")} body={t("empty.body")} />
-          )}
-        </div>
+      <Section className="pb-0">
+        <SectionHeading eyebrow={t("title")} title={t("title")} lead={t("intro")} />
+      </Section>
+
+      <Section className="pt-10">
+        {items.length > 0 ? (
+          <GalleryGrid items={items} kinds={kinds} filterLabels={filterLabels} />
+        ) : (
+          <EmptyState icon={Images} title={t("empty.title")} body={t("empty.body")} />
+        )}
       </Section>
 
       <CtaBand locale={locale} />

@@ -68,7 +68,7 @@ export function PromoCountdown({ endsOn }: { endsOn: string }) {
       <div className="flex items-center gap-1.5" role="timer" aria-live="off">
         {units.map((unit, index) => (
           <div key={unit.label} className="flex items-center gap-1.5">
-            <div className="flex min-w-[2.75rem] flex-col items-center rounded-lg bg-ink-900 px-2 py-1.5">
+            <div className="flex min-w-11 flex-col items-center rounded-xl bg-ink-900 px-2 py-1.5">
               <span className="font-mono text-lg font-bold tabular-nums text-white">
                 {String(unit.value).padStart(2, "0")}
               </span>

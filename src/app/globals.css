@@ -1,48 +1,54 @@
 @import "tailwindcss";
 
 /*
- * Design tokens — PROVISIONAL palette (TZ doc 05 pending the logo file; see
- * docs/DECISIONS.md D-05 and docs/OPEN_ITEMS.md #6). Replacing the brand
- * scale here re-themes the entire platform; components only consume tokens.
+ * Design tokens — derived from the Turon Avtomaktab shield logo
+ * (navy #33498A, coral #F46836). Brand = structural trust color (headers,
+ * dark surfaces, text-on-light). Accent = the single conversion color,
+ * reserved for primary CTAs and promo/urgency surfaces so it keeps its
+ * punch. Components only ever consume these tokens.
  */
 @theme {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", sans-serif;
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 
-  /* Brand — confident blue (provisional, to be derived from the logo). */
-  --color-brand-50: #eff5ff;
-  --color-brand-100: #dbe8fe;
-  --color-brand-200: #bfd7fe;
-  --color-brand-300: #93bbfd;
-  --color-brand-400: #6099fa;
-  --color-brand-500: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e40af;
-  --color-brand-900: #1e3a8a;
-  --color-brand-950: #172554;
+  /* Brand — deep navy, sampled from the logo shield. */
+  --color-brand-50: #eef1fa;
+  --color-brand-100: #dbe2f4;
+  --color-brand-200: #b9c7e9;
+  --color-brand-300: #8fa3d8;
+  --color-brand-400: #6178bd;
+  --color-brand-500: #46589f;
+  --color-brand-600: #33498a;
+  --color-brand-700: #293a6e;
+  --color-brand-800: #202d55;
+  --color-brand-900: #16203d;
+  --color-brand-950: #0d1326;
 
-  /* Ink — cool neutral scale for text and surfaces. */
-  --color-ink-50: #f8fafc;
-  --color-ink-100: #f1f5f9;
-  --color-ink-200: #e2e8f0;
-  --color-ink-300: #cbd5e1;
-  --color-ink-400: #94a3b8;
-  --color-ink-500: #64748b;
-  --color-ink-600: #475569;
-  --color-ink-700: #334155;
-  --color-ink-800: #1e293b;
-  --color-ink-900: #0f172a;
-  --color-ink-950: #020617;
+  /* Accent — coral, sampled from the logo ribbon. The one conversion color. */
+  --color-accent-50: #fff4ef;
+  --color-accent-100: #ffe4d6;
+  --color-accent-200: #ffc7ac;
+  --color-accent-300: #ff9f72;
+  --color-accent-400: #fa824e;
+  --color-accent-500: #f46836;
+  --color-accent-600: #e0501e;
+  --color-accent-700: #b93e16;
+  --color-accent-800: #8f3113;
+  --color-accent-900: #6e2610;
 
-  /* Accent — amber, reserved for promo/urgency surfaces only. */
-  --color-accent-50: #fffbeb;
-  --color-accent-100: #fef3c7;
-  --color-accent-200: #fde68a;
-  --color-accent-400: #fbbf24;
-  --color-accent-500: #f59e0b;
-  --color-accent-600: #d97706;
-  --color-accent-700: #b45309;
+  /* Ink — cool near-navy neutral scale for text and surfaces. */
+  --color-ink-50: #f7f8fa;
+  --color-ink-100: #eef0f4;
+  --color-ink-200: #dde1e9;
+  --color-ink-300: #c2c8d4;
+  --color-ink-400: #93a0b5;
+  --color-ink-500: #687593;
+  --color-ink-600: #4c5670;
+  --color-ink-700: #333c54;
+  --color-ink-800: #1d2338;
+  --color-ink-900: #10131f;
+  --color-ink-950: #080a12;
 
   /* Feedback */
   --color-success-50: #f0fdf4;
@@ -52,13 +58,52 @@
   --color-danger-600: #dc2626;
   --color-danger-700: #b91c1c;
 
-  --radius-card: 1rem;
-  --radius-control: 0.625rem;
+  --radius-control: 0.875rem;
+  --radius-card: 1.5rem;
+  --radius-pill: 999px;
 
-  --shadow-card: 0 1px 2px 0 rgb(2 6 23 / 0.04),
-    0 8px 24px -12px rgb(2 6 23 / 0.12);
-  --shadow-card-hover: 0 2px 4px 0 rgb(2 6 23 / 0.05),
-    0 16px 40px -12px rgb(2 6 23 / 0.18);
+  /* Soft, multi-layer ambient shadows — closer to Stripe/Linear depth than a
+     flat drop-shadow. Card hover swaps in a slightly larger, cooler shadow. */
+  --shadow-card: 0 1px 1px 0 rgb(16 19 31 / 0.03),
+    0 6px 16px -8px rgb(16 19 31 / 0.10), 0 20px 40px -24px rgb(16 19 31 / 0.14);
+  --shadow-card-hover: 0 2px 4px 0 rgb(16 19 31 / 0.04),
+    0 12px 24px -8px rgb(16 19 31 / 0.14), 0 32px 64px -24px rgb(16 19 31 / 0.22);
+  --shadow-glow-accent: 0 12px 32px -8px rgb(244 104 54 / 0.45);
+  --shadow-glow-brand: 0 12px 32px -8px rgb(51 73 138 / 0.35);
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-fade-up: fade-up 0.6s var(--ease-premium) both;
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 }
 
 html {
@@ -68,31 +113,99 @@ html {
 
 body {
   @apply bg-white text-ink-900 antialiased;
+  font-feature-settings: "cv11", "ss01";
 }
 
 ::selection {
-  background-color: var(--color-brand-100);
+  background-color: var(--color-accent-200);
   color: var(--color-brand-900);
 }
 
 /* Single, consistent focus treatment (WCAG 2.2 focus-visible). */
 :focus-visible {
-  outline: 2px solid var(--color-brand-600);
+  outline: 2px solid var(--color-accent-500);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
+/* Slim, premium scrollbar (WebKit + Firefox). Purely cosmetic. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-300) transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-ink-300);
+  border-radius: 999px;
+  border: 2px solid white;
+}
+
+/* Glass surfaces — light glass for content on white, dark glass for hero
+   overlays. Used by the header, floating stat cards and lightbox chrome. */
+.glass-light {
+  background: rgb(255 255 255 / 0.72);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+}
+.glass-dark {
+  background: rgb(16 19 31 / 0.45);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+}
+
+/* Fine radial noise texture for dark hero/CTA surfaces — adds tactile depth
+   without a texture image request. */
+.bg-grain {
+  position: relative;
+  isolation: isolate;
+}
+.bg-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+  background-image: radial-gradient(
+    rgb(255 255 255 / 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 3px 3px;
+}
+
+.text-balance-pretty {
+  text-wrap: balance;
+}
+
 /*
  * Scroll-reveal motion (see docs/DECISIONS.md D-04): transform/opacity only,
- * driven by an IntersectionObserver that toggles data-revealed.
- * Reduced-motion users get instant, motionless content.
+ * driven by an IntersectionObserver that toggles data-revealed. `data-reveal`
+ * accepts an optional variant via the value itself.
  */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(20px);
   transition:
-    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.7s var(--ease-premium),
+    transform 0.7s var(--ease-premium);
+}
+
+[data-reveal="scale"] {
+  transform: translateY(16px) scale(0.96);
+}
+
+[data-reveal="left"] {
+  transform: translateX(-28px);
+}
+
+[data-reveal="right"] {
+  transform: translateX(28px);
 }
 
 [data-reveal][data-revealed="true"] {
@@ -109,5 +222,10 @@ body {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .animate-float,
+  .animate-marquee {
+    animation: none !important;
   }
 }

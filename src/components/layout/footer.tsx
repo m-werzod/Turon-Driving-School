@@ -8,9 +8,10 @@ import { FOOTER_PAGE_LINKS, type FooterData } from "./nav-data";
 import { formatUzPhone, telHref } from "@/lib/phone";
 
 /**
- * Global footer (TZ §5.4). Four groups — brand, pages, categories, branches —
- * plus a bottom bar with copyright, license number, privacy link, and the
- * language switcher. Server component; only the switcher is client.
+ * Global footer (TZ §5.4). Dark navy surface — a deliberate contrast beat
+ * after the light content pages, with the logo given real room to breathe.
+ * Four groups — brand, pages, categories, branches — plus a bottom bar with
+ * copyright, license number, privacy link, and the language switcher.
  */
 export function SiteFooter({ data }: { data: FooterData }) {
   const t = useTranslations();
@@ -30,46 +31,46 @@ export function SiteFooter({ data }: { data: FooterData }) {
   };
 
   return (
-    <footer className="border-t border-ink-200 bg-ink-50">
-      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-12">
+    <footer className="bg-ink-950">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-4">
-            <Logo label={t("nav.home")} />
-            <p className="mt-4 max-w-xs text-pretty text-sm text-ink-600">
+            <Logo label={t("nav.home")} size="lg" tone="light" />
+            <p className="mt-5 max-w-xs text-pretty text-sm text-white/50">
               {t("footer.tagline")}
             </p>
-            <div className="mt-5 flex items-center gap-3">
+            <div className="mt-6 flex items-center gap-3">
               <a
                 href={data.telegramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Telegram"
-                className="rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
+                className="rounded-lg transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
               >
-                <TelegramIcon className="size-8" />
+                <TelegramIcon className="size-9" />
               </a>
               <a
                 href={data.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
+                className="rounded-lg transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
               >
-                <InstagramIcon className="size-8" />
+                <InstagramIcon className="size-9" />
               </a>
             </div>
           </div>
 
           {/* Pages */}
           <nav aria-label={t("footer.pages")} className="lg:col-span-2">
-            <h2 className="text-sm font-semibold text-ink-900">{t("footer.pages")}</h2>
-            <ul className="mt-4 flex flex-col gap-2.5 text-sm text-ink-600">
+            <h2 className="text-sm font-semibold text-white">{t("footer.pages")}</h2>
+            <ul className="mt-5 flex flex-col gap-3 text-sm text-white/55">
               {FOOTER_PAGE_LINKS.map((href) => (
                 <li key={href}>
                   <Link
                     href={href}
-                    className="rounded transition-colors hover:text-brand-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
+                    className="rounded transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
                   >
                     {pageLabels[href]}
                   </Link>
@@ -80,12 +81,12 @@ export function SiteFooter({ data }: { data: FooterData }) {
 
           {/* Categories */}
           <nav aria-label={t("footer.categories")} className="lg:col-span-2">
-            <h2 className="text-sm font-semibold text-ink-900">{t("footer.categories")}</h2>
-            <ul className="mt-4 flex flex-col gap-2.5 text-sm text-ink-600">
+            <h2 className="text-sm font-semibold text-white">{t("footer.categories")}</h2>
+            <ul className="mt-5 flex flex-col gap-3 text-sm text-white/55">
               <li>
                 <Link
                   href="/express-courses"
-                  className="rounded font-semibold text-brand-700 transition-colors hover:text-brand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
+                  className="rounded font-semibold text-accent-400 transition-colors hover:text-accent-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
                 >
                   {t("nav.express")}
                 </Link>
@@ -94,7 +95,7 @@ export function SiteFooter({ data }: { data: FooterData }) {
                 <li key={category.slug}>
                   <Link
                     href={{ pathname: "/categories/[slug]", params: { slug: category.slug } }}
-                    className="rounded transition-colors hover:text-brand-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
+                    className="rounded transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
                   >
                     {category.name}
                   </Link>
@@ -105,29 +106,29 @@ export function SiteFooter({ data }: { data: FooterData }) {
 
           {/* Branches */}
           <nav aria-label={t("footer.branches")} className="lg:col-span-4">
-            <h2 className="text-sm font-semibold text-ink-900">{t("footer.branches")}</h2>
-            <ul className="mt-4 flex flex-col gap-4 text-sm text-ink-600">
+            <h2 className="text-sm font-semibold text-white">{t("footer.branches")}</h2>
+            <ul className="mt-5 grid grid-cols-1 gap-5 text-sm text-white/55 sm:grid-cols-2">
               {data.branches.map((branch) => (
                 <li key={branch.slug}>
                   <Link
                     href={{ pathname: "/branches/[slug]", params: { slug: branch.slug } }}
-                    className="rounded font-semibold text-ink-800 transition-colors hover:text-brand-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
+                    className="font-semibold text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
                   >
                     {branch.name}
                   </Link>
-                  <div className="mt-1 flex flex-col gap-1">
+                  <div className="mt-1.5 flex flex-col gap-1">
                     {branch.phones.map((phone) => (
                       <a
                         key={phone}
                         href={telHref(phone)}
-                        className="inline-flex items-center gap-1.5 text-ink-600 transition-colors hover:text-brand-700"
+                        className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
                       >
-                        <Phone className="size-3.5 text-ink-400" aria-hidden="true" />
+                        <Phone className="size-3.5 text-white/30" aria-hidden="true" />
                         {formatUzPhone(phone)}
                       </a>
                     ))}
-                    <span className="inline-flex items-center gap-1.5 text-xs text-ink-500">
-                      <Clock className="size-3.5 text-ink-400" aria-hidden="true" />
+                    <span className="inline-flex items-center gap-1.5 text-xs text-white/40">
+                      <Clock className="size-3.5 text-white/30" aria-hidden="true" />
                       {branch.hours}
                     </span>
                   </div>
@@ -137,8 +138,8 @@ export function SiteFooter({ data }: { data: FooterData }) {
           </nav>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-ink-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col gap-1 text-sm text-ink-500">
+        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-1 text-sm text-white/40">
             <p>
               © {year} {t("common.brand")}. {t("footer.rights")}
             </p>
@@ -151,11 +152,11 @@ export function SiteFooter({ data }: { data: FooterData }) {
           <div className="flex items-center gap-4">
             <Link
               href="/privacy"
-              className="rounded text-sm text-ink-500 transition-colors hover:text-brand-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
+              className="rounded text-sm text-white/40 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
             >
               {t("nav.privacy")}
             </Link>
-            <LanguageSwitcher label={t("header.languageLabel")} />
+            <LanguageSwitcher label={t("header.languageLabel")} tone="light" />
           </div>
         </div>
       </div>
