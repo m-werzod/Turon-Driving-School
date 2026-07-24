@@ -331,6 +331,14 @@ export const galleryAlbums: GalleryAlbum[] = [
         width: 464,
         height: 848,
       },
+      {
+        src: "/assets/photos/events/event-main.mp4",
+        poster: "/assets/videos/posters/event-main.jpg",
+        video: true,
+        alt: { uz: "Avtodromda narxlar haqida video", ru: "Видео о ценах на автодроме" },
+        width: 1072,
+        height: 1904,
+      },
     ],
   },
 ];
