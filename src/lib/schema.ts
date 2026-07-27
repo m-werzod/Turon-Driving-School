@@ -8,6 +8,20 @@ import { activePromo } from "./promo";
  * consumed by <JsonLd>. All URLs are absolute and locale-correct.
  */
 
+const FOUNDER_NAME = "Azimov Murodillo Jalolxonovich";
+const FOUNDER_TITLE = "CEO, Founder & Director";
+
+/** Stable @id for the founder Person node, shared across pages so Google
+ * resolves the org's `founder` reference and the About page's Person node
+ * as the same entity. */
+function founderId(locale: Locale): string {
+  return `${absoluteUrl("/about", locale)}#person-founder`;
+}
+
+function organizationId(locale: Locale): string {
+  return `${absoluteUrl("/", locale)}#organization`;
+}
+
 export function organizationSchema(
   settings: SiteSettings,
   locale: Locale,
@@ -15,11 +29,41 @@ export function organizationSchema(
   return {
     "@context": "https://schema.org",
     "@type": "DrivingSchool",
+    "@id": organizationId(locale),
     name: settings.brandName,
     url: absoluteUrl("/", locale),
     telephone: settings.phones[0]?.number,
     areaServed: "Namangan Region, Uzbekistan",
     sameAs: [settings.telegramUrl, settings.instagramUrl].filter(Boolean),
+    founder: {
+      "@type": "Person",
+      "@id": founderId(locale),
+      name: FOUNDER_NAME,
+      jobTitle: FOUNDER_TITLE,
+    },
+  };
+}
+
+/** Person node for the founder/CEO/director, linked to the org via worksFor. */
+export function founderSchema(
+  settings: SiteSettings,
+  locale: Locale,
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": founderId(locale),
+    name: FOUNDER_NAME,
+    jobTitle: FOUNDER_TITLE,
+    birthDate: "1986-10-10",
+    image: `${SITE_URL}/assets/photos/leadership/director.jpg`,
+    url: absoluteUrl("/about", locale),
+    worksFor: {
+      "@type": "DrivingSchool",
+      "@id": organizationId(locale),
+      name: settings.brandName,
+      url: absoluteUrl("/", locale),
+    },
   };
 }
 

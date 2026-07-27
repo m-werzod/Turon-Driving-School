@@ -9,8 +9,10 @@ import { LearningProcess } from "@/components/sections/learning-process";
 import { AutodromeStory } from "@/components/sections/autodrome-story";
 import { VehicleFleet } from "@/components/sections/vehicle-fleet";
 import { CtaBand } from "@/components/sections/cta-band";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getSettings } from "@/server/content";
 import { buildMetadata } from "@/lib/metadata";
+import { founderSchema } from "@/lib/schema";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -81,7 +83,7 @@ export default async function AboutPage({
             <div className="relative aspect-3/2 overflow-hidden rounded-card shadow-(--shadow-card-hover)">
               <Image
                 src="/assets/photos/leadership/director.jpg"
-                alt=""
+                alt={t("leadership.name")}
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
@@ -93,14 +95,20 @@ export default async function AboutPage({
               {t("leadership.eyebrow")}
             </span>
             <h2 className="mt-5 font-display text-2xl font-bold text-ink-900 sm:text-3xl">
-              {t("leadership.role")}
+              {t("leadership.name")}
             </h2>
+            <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-brand-600">
+              {t("leadership.role")}
+            </p>
             <p className="mt-5 max-w-lg text-pretty text-ink-600 sm:text-lg">
               {t("leadership.body")}
             </p>
+            <p className="mt-3 text-sm text-ink-500">{t("leadership.born")}</p>
           </div>
         </div>
       </Section>
+
+      <JsonLd data={founderSchema(settings, locale)} />
 
       <Section className="bg-ink-900">
         <SectionHeading title={t("numbers.title")} className="[&_h2]:text-white" />

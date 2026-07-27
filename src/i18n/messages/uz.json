@@ -315,8 +315,10 @@
     "storyP2": "Bugun Turon — bu viloyat bo'ylab 7 ta filial, o'z avtodromi, zamonaviy o'quv transporti va minglab muvaffaqiyatli bitiruvchilar. Har oy yuzlab o'quvchilarimiz imtihonlardan o'tib, haydovchilik guvohnomasiga ega bo'lmoqda.",
     "leadership": {
       "eyebrow": "Rahbariyat",
-      "role": "Turon Avtomaktab asoschisi va direktori",
-      "body": "Turon Avtomaktab shu rahbarlik ostida faoliyat yuritadi. Maqsad — har bir o'quvchini yo'lda o'ziga ishonadigan, qoidalarni hurmat qiladigan va xavfsiz haydaydigan haydovchi qilib tayyorlash."
+      "name": "Azimov Murodillo Jalolxonovich",
+      "role": "Turon Avtomaktab asoschisi va direktori (CEO)",
+      "body": "Turon Avtomaktab shu rahbarlik ostida faoliyat yuritadi. Maqsad — har bir o'quvchini yo'lda o'ziga ishonadigan, qoidalarni hurmat qiladigan va xavfsiz haydaydigan haydovchi qilib tayyorlash.",
+      "born": "Tug'ilgan sana: 1986-yil 10-oktabr"
     },
     "numbers": {
       "title": "Raqamlarda",
