@@ -23,6 +23,7 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Skip API routes, Next internals and any file with an extension.
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  // Skip API routes, the admin panel (its own auth/session model, no
+  // locale routing), Next internals and any file with an extension.
+  matcher: ["/((?!api|admin|_next|_vercel|.*\\..*).*)"],
 };

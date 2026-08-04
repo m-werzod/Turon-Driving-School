@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Menu, Phone } from "lucide-react";
+import NextLink from "next/link";
+import { ChevronDown, Menu, Phone, ShieldUser } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { buttonClasses } from "@/components/ui/button";
@@ -142,6 +143,18 @@ export function SiteHeader({ data }: { data: HeaderData }) {
             >
               {t("register")}
             </Link>
+            <NextLink
+              href="/admin/login"
+              aria-label={t("admin")}
+              className={cn(
+                "grid size-10 shrink-0 place-items-center rounded-pill transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500",
+                transparent
+                  ? "text-white/70 hover:bg-white/10 hover:text-white"
+                  : "text-ink-500 hover:bg-ink-100 hover:text-ink-800",
+              )}
+            >
+              <ShieldUser className="size-5" aria-hidden="true" />
+            </NextLink>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">

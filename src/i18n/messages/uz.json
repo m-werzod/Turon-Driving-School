@@ -25,7 +25,8 @@
     "faq": "Savol-javob",
     "contact": "Aloqa",
     "register": "Ro'yxatdan o'tish",
-    "privacy": "Maxfiylik siyosati"
+    "privacy": "Maxfiylik siyosati",
+    "admin": "Admin"
   },
   "header": {
     "openMenu": "Menyuni ochish",

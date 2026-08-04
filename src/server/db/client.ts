@@ -19,3 +19,18 @@ export function getDb(): Database | null {
   cached = drizzle(postgres(url, { max: 5, connect_timeout: 10 }), { schema });
   return cached;
 }
+
+/**
+ * Same handle, but throws when DATABASE_URL is unset. The admin panel and
+ * CMS-backed content reads have no graceful-degradation story — unlike
+ * leads, there is nothing meaningful to fall back to.
+ */
+export function getDbOrThrow(): Database {
+  const db = getDb();
+  if (!db) {
+    throw new Error(
+      "DATABASE_URL is not set — the admin panel and CMS content require a database.",
+    );
+  }
+  return db;
+}

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChevronDown, Phone, X } from "lucide-react";
+import NextLink from "next/link";
+import { ChevronDown, Phone, ShieldUser, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { buttonClasses } from "@/components/ui/button";
@@ -202,6 +203,15 @@ export function MobileMenu({
           >
             {t("register")}
           </Link>
+
+          <NextLink
+            href="/admin/login"
+            onClick={onClose}
+            className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-ink-400 hover:text-ink-600"
+          >
+            <ShieldUser className="size-3.5" aria-hidden="true" />
+            {t("admin")}
+          </NextLink>
         </div>
       </div>
     </div>
