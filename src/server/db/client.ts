@@ -11,12 +11,20 @@ let cached: Database | null = null;
  * The public site never touches the database; only the lead service does,
  * and it degrades to Telegram-only delivery without one (docs/DECISIONS.md
  * D-07).
+ *
+ * Uses the pooled connection (Neon/pgbouncer) since this runs per-request in
+ * a serverless environment; `prepare: false` is required against a
+ * transaction-mode pooler, which doesn't support session-scoped prepared
+ * statements the way postgres-js uses them by default.
  */
 export function getDb(): Database | null {
   if (cached) return cached;
   const url = process.env.DATABASE_URL;
   if (!url) return null;
-  cached = drizzle(postgres(url, { max: 5, connect_timeout: 10 }), { schema });
+  cached = drizzle(
+    postgres(url, { max: 5, connect_timeout: 10, prepare: false }),
+    { schema },
+  );
   return cached;
 }
 

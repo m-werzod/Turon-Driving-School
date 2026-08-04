@@ -31,12 +31,15 @@ import { settings as settingsContent } from "@/content/settings";
 import { hashPassword } from "@/server/admin/password";
 
 async function main() {
-  const url = process.env.DATABASE_URL;
+  // Prefer the direct (unpooled) connection — a one-shot script doesn't need
+  // pgbouncer, and it avoids the prepared-statement caveat pooled Neon
+  // connections have with postgres-js.
+  const url = process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL;
   if (!url) {
     throw new Error("DATABASE_URL is not set — nothing to seed against.");
   }
 
-  const client = postgres(url, { max: 1 });
+  const client = postgres(url, { max: 1, prepare: false });
   const db = drizzle(client, { schema });
 
   try {
