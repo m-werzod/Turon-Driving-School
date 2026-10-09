@@ -16,7 +16,7 @@ provided. Mirrors TZ doc 04 §13 and adds the concrete code locations affected.
 | 8 | Real media (branch photos, gallery, results photos) | `src/content/gallery.ts` populated (autodrome/classroom/graduation/vehicles albums); lightbox grid UI still ships with the media milestone | Branch/result media fields still unpopulated; 2 corrupt source video files (`grad2.mp4`, `vdgr01.mp4`) need re-export | Launch content gate |
 | 9 | Monthly exam-result figures | Awaiting client | `src/content/results.ts` — entries marked `PROVISIONAL`, must be replaced with real posts | **Launch blocker** |
 | 10 | Testimonials | Awaiting collection + moderation | `src/content/testimonials.ts` — empty; Home section auto-hides while empty | Structure-safe |
-| 11 | Branch geo coordinates | Approximate town centers seeded | `src/content/branches.ts` — verify each pin before launch; map deep links use landmark search queries meanwhile | Verify before launch |
+| 11 | Branch geo coordinates | **Resolved** — approximated pins removed (docs/DECISIONS.md D-09). Four locations are school-confirmed; the remaining three are tracked as #13/#14 below. | `src/content/branches.ts` | Superseded |
 
 ## Resolution procedure
 
@@ -24,3 +24,21 @@ provided. Mirrors TZ doc 04 §13 and adds the concrete code locations affected.
 2. Update the referenced content file(s); remove the `PROVISIONAL` marker.
 3. Tick the row here; when all launch blockers are clear, the content gate
    (TZ doc 21 §4) can be signed off.
+
+
+## Added 2026-10-09
+
+| # | Item | Status | Affected code | Severity |
+|---|---|---|---|---|
+| 12 | **E category price** | Awaiting client | `src/content/categories.ts` — `basePrice: null`. The category is listed and fully described, but renders "Narxni aniqlashtiring" / "Цена по запросу" and is excluded from the schema.org `Offer`. No price is guessed. | **Launch blocker** |
+| 13 | Map links for Kamuna, Bog'ishamol, To'raqo'rg'on | Awaiting client | `src/content/branches.ts` — `googleMapsUrl: null`, so these three render no map, no directions buttons and no `GeoCoordinates`. Send a Google Maps share link per branch. | **Launch blocker** |
+| 14 | Exact coordinates for the three share-link branches | Awaiting client | Only Namangan shahar has confirmed lat/lng. Kosonsoy, Buloq and Tergachi have share links but no coordinates, so their **Yandex** button, embedded map and schema.org `GeoCoordinates` are omitted (Google works). Open each link in a browser and send the expanded URL or the lat/lng. | Enhancement |
+| 15 | `ANTHROPIC_API_KEY` for the chat assistant | Not set | Without it `/api/chat` returns 503 and the widget shows its unavailable state. **The live model call has never been executed** — see the delivery notes. | **Launch blocker for the chatbot** |
+
+### E category — what was assumed
+
+The school confirmed an E category exists and should sit between BE and D.
+Its price was not supplied, so it is `null` by design. Its description was
+written as a trailer entitlement (the standard meaning of E in Uzbek
+licensing). **Confirm the wording and the price before launch** — if E means
+something else here, only `src/content/categories.ts` needs editing.

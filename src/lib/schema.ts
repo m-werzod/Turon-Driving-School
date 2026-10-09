@@ -125,16 +125,22 @@ export function courseSchema(
       name: settings.brandName,
       url: absoluteUrl("/", locale),
     },
-    offers: {
-      "@type": "Offer",
-      price: String(price),
-      priceCurrency: "UZS",
-      category: "Paid",
-      url: absoluteUrl(
-        { pathname: "/categories/[slug]", params: { slug: category.slug } },
-        locale,
-      ),
-    },
+    // No published price means no Offer node — an Offer without a real
+    // price would be structured-data misinformation.
+    ...(price === null
+      ? {}
+      : {
+          offers: {
+            "@type": "Offer",
+            price: String(price),
+            priceCurrency: "UZS",
+            category: "Paid",
+            url: absoluteUrl(
+              { pathname: "/categories/[slug]", params: { slug: category.slug } },
+              locale,
+            ),
+          },
+        }),
   };
 }
 

@@ -27,7 +27,7 @@ export function Logo({
       onClick={onClick}
       aria-label={label}
       className={cn(
-        "group inline-flex items-center gap-2.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4",
+        "group inline-flex min-w-0 items-center gap-2.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4",
         className,
       )}
     >
@@ -45,7 +45,7 @@ export function Logo({
       />
       <span
         className={cn(
-          "font-extrabold leading-tight tracking-tight",
+          "truncate font-extrabold leading-tight tracking-tight",
           s.wordmark,
           tone === "light" ? "text-white" : "text-ink-900",
         )}
@@ -53,7 +53,7 @@ export function Logo({
         Turon{" "}
         <span
           className={cn(
-            "font-semibold",
+            "hidden font-semibold sm:inline",
             tone === "light" ? "text-white/70" : "text-ink-500",
           )}
         >

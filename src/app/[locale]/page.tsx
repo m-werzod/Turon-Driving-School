@@ -68,9 +68,11 @@ export default async function HomePage({
     getTranslations({ locale, namespace: "common" }),
   ]);
 
+  // Categories without a published price are skipped, not treated as free.
   const cheapestPrice = categories.reduce((min, category) => {
     const promo = activePromo(category.promo);
     const price = promo ? promo.price : category.basePrice;
+    if (price === null) return min;
     return price < min ? price : min;
   }, Infinity);
 

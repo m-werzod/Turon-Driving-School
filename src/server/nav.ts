@@ -29,7 +29,7 @@ export async function getHeaderData(locale: ContentLocale): Promise<HeaderData> 
         code: category.code,
         name: category.name[locale],
         tagline: category.tagline[locale],
-        priceFrom: formatUzs(price, locale),
+        priceFrom: price === null ? null : formatUzs(price, locale),
       };
     }),
     branches: branches.map((branch) => ({

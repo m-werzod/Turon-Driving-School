@@ -70,7 +70,9 @@ export default async function BranchDetailPage({
   const offered = allCategories.filter((category) =>
     branch.categorySlugs.includes(category.slug),
   );
-  const mapQuery = `${branch.name[locale]}, ${branch.landmark[locale]}`;
+  const googleUrl = googleMapsUrl(branch);
+  const yandexUrl = yandexMapsUrl(branch);
+  const embedUrl = googleMapsEmbedUrl(branch);
 
   const breadcrumbEntries = [
     { name: tCommon("brand"), url: absoluteUrl("/", locale) },
@@ -120,41 +122,50 @@ export default async function BranchDetailPage({
 
       <Section>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {/* Embedded map */}
+          {/* Map + directions. Each affordance renders only when the school
+              has supplied a source accurate enough to back it. */}
           <Card className="overflow-hidden lg:col-span-2">
-            <iframe
-              title={t("mapTitle", { name: branch.name[locale] })}
-              src={googleMapsEmbedUrl(branch, mapQuery)}
-              className="h-80 w-full sm:h-96"
-              style={{ border: 0 }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            {embedUrl ? (
+              <iframe
+                title={t("mapTitle", { name: branch.name[locale] })}
+                src={embedUrl}
+                className="h-80 w-full sm:h-96"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            ) : null}
             <div className="flex flex-col gap-3 p-6 sm:flex-row">
               <p className="flex flex-1 items-start gap-2 text-pretty text-sm text-ink-600">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-accent-500" aria-hidden="true" />
                 {branch.landmark[locale]}
               </p>
-              <div className="flex shrink-0 gap-2.5">
-                <a
-                  href={googleMapsUrl(branch, mapQuery)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-pill bg-ink-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-800"
-                >
-                  <Navigation className="size-4" aria-hidden="true" />
-                  {t("openGoogle")}
-                </a>
-                <a
-                  href={yandexMapsUrl(branch, mapQuery)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-pill bg-white px-4 py-2.5 text-sm font-semibold text-ink-800 ring-1 ring-inset ring-ink-200 transition-colors hover:bg-ink-50"
-                >
-                  <YandexMapsIcon className="size-4" />
-                  {t("openYandex")}
-                </a>
-              </div>
+              {googleUrl || yandexUrl ? (
+                <div className="flex shrink-0 gap-2.5">
+                  {googleUrl ? (
+                    <a
+                      href={googleUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 rounded-pill bg-ink-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-800"
+                    >
+                      <Navigation className="size-4" aria-hidden="true" />
+                      {t("openGoogle")}
+                    </a>
+                  ) : null}
+                  {yandexUrl ? (
+                    <a
+                      href={yandexUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 rounded-pill bg-white px-4 py-2.5 text-sm font-semibold text-ink-800 ring-1 ring-inset ring-ink-200 transition-colors hover:bg-ink-50"
+                    >
+                      <YandexMapsIcon className="size-4" />
+                      {t("openYandex")}
+                    </a>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
           </Card>
 

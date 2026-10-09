@@ -43,13 +43,15 @@ export function CategoryCard({ category }: { category: Category }) {
 
         <div className="mt-6 flex items-end justify-between border-t border-ink-100 pt-5">
           <div className="flex flex-col">
-            {promo ? (
+            {promo && category.basePrice !== null ? (
               <span className="text-xs font-medium text-ink-400 line-through">
                 {formatUzs(category.basePrice, locale)}
               </span>
             ) : null}
             <p className="font-display text-lg font-extrabold text-ink-900">
-              {t("priceFrom", { price: formatUzs(price, locale) })}
+              {price === null
+                ? t("priceOnRequest")
+                : t("priceFrom", { price: formatUzs(price, locale) })}
             </p>
           </div>
           <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ink-100 text-ink-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:bg-accent-500 group-hover:text-white">

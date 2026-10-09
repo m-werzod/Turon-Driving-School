@@ -11,7 +11,8 @@
     "untilDate": "{date} gacha",
     "daysLeft": "{count} kun qoldi",
     "workingHours": "Ish vaqti",
-    "phoneNumbers": "Telefon raqamlari"
+    "phoneNumbers": "Telefon raqamlari",
+    "priceOnRequest": "Narxni aniqlashtiring"
   },
   "nav": {
     "home": "Bosh sahifa",
@@ -461,5 +462,33 @@
   },
   "breadcrumbs": {
     "home": "Bosh sahifa"
+  },
+  "chat": {
+    "launcherLabel": "Turon AI yordamchisi bilan suhbat",
+    "tooltip": "Salom! Turon Avto Maktab bo'yicha savollaringiz bormi?",
+    "tooltipDismiss": "Yopish",
+    "title": "Turon AI Assistant",
+    "online": "Onlayn",
+    "minimize": "Kichraytirish",
+    "close": "Yopish",
+    "emptyTitle": "Savolingizni yozing",
+    "emptyBody": "Kurslar, narxlar, filiallar va ro'yxatdan o'tish bo'yicha javob beraman.",
+    "inputPlaceholder": "Savolingizni yozing…",
+    "send": "Yuborish",
+    "typing": "Yozmoqda…",
+    "retry": "Qayta urinish",
+    "disclaimer": "AI yordamchi — muhim ma'lumotni filial bilan tasdiqlang.",
+    "suggestions": {
+      "prices": "Kurs narxlari",
+      "branches": "Filiallarimiz",
+      "enroll": "Kursga yozilish",
+      "categories": "Qaysi toifa menga mos?",
+      "express": "Imtihondan yiqildim"
+    },
+    "errors": {
+      "rateLimited": "Juda ko'p savol yubordingiz. Biroz kuting yoki bizga qo'ng'iroq qiling.",
+      "unavailable": "Yordamchi hozircha ishlamayapti. Iltimos, telefon orqali bog'laning.",
+      "generic": "Javob olishda xatolik yuz berdi. Qayta urinib ko'ring."
+    }
   }
 }

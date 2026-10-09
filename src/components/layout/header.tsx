@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import NextLink from "next/link";
-import { ChevronDown, Menu, Phone, ShieldUser } from "lucide-react";
+import { ChevronDown, Menu, ShieldUser } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { buttonClasses } from "@/components/ui/button";
@@ -10,7 +10,6 @@ import { Logo } from "./logo";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileMenu } from "./mobile-menu";
 import type { HeaderData } from "./nav-data";
-import { formatUzPhone, telHref } from "@/lib/phone";
 import { cn } from "@/lib/cn";
 
 /**
@@ -19,6 +18,19 @@ import { cn } from "@/lib/cn";
  * those never have a dark hero under it). Sticky; condenses on scroll-down
  * and reappears on scroll-up. Desktop shows six primary nav items with
  * Toifalar/Filiallar mega-menus; mobile shows logo + switcher + menu button.
+ *
+ * Desktop fit: six nav items, the locale switcher and the CTA need about
+ * 1080px before they start colliding, so the full desktop row appears at xl
+ * (1280px) rather than lg — between lg and xl the overlap was silently
+ * hiding the last two nav items behind the switcher. Below xl the overlay
+ * menu carries the same navigation, so nothing becomes unreachable. The
+ * The phone number is deliberately not in this row: the container is capped
+ * at max-w-7xl, so even at 1920px there is ~65px too little for it and it
+ * overlapped the last nav items. It remains one tap away everywhere it
+ * matters — the footer, the contact page, every branch page, the mobile
+ * overlay menu and the mobile sticky action bar. Logo and the action cluster
+ * are `shrink-0` and everything is nowrap, so no header item can wrap to a
+ * second line.
  */
 export function SiteHeader({ data }: { data: HeaderData }) {
   const t = useTranslations("nav");
@@ -51,7 +63,6 @@ export function SiteHeader({ data }: { data: HeaderData }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const firstPhone = data.phones[0];
   const transparent = isHome && !scrolled;
 
   return (
@@ -65,10 +76,15 @@ export function SiteHeader({ data }: { data: HeaderData }) {
             : "glass-light border-b border-ink-200/60 shadow-[0_1px_0_rgb(16_19_31/0.04)]",
         )}
       >
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8 lg:h-24 lg:px-10">
-          <Logo label={t("home")} size="lg" tone={transparent ? "light" : "dark"} />
+        <div className="mx-auto flex h-20 max-w-7xl flex-nowrap items-center justify-between gap-3 px-5 sm:px-8 lg:h-24 lg:px-8 xl:gap-6 xl:px-10">
+          <div className="min-w-0 shrink xl:shrink-0">
+            <Logo label={t("home")} size="lg" tone={transparent ? "light" : "dark"} />
+          </div>
 
-          <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
+          <nav
+            aria-label="Primary"
+            className="hidden min-w-0 shrink items-center gap-0.5 xl:flex"
+          >
             <DesktopDropdown
               label={t("categories")}
               transparent={transparent}
@@ -118,28 +134,14 @@ export function SiteHeader({ data }: { data: HeaderData }) {
             </NavLink>
           </nav>
 
-          <div className="hidden items-center gap-4 lg:flex">
-            {firstPhone ? (
-              <a
-                href={telHref(firstPhone.number)}
-                className={cn(
-                  "inline-flex items-center gap-2 text-sm font-semibold transition-colors",
-                  transparent
-                    ? "text-white/90 hover:text-white"
-                    : "text-ink-700 hover:text-accent-600",
-                )}
-              >
-                <Phone
-                  className={cn("size-4", transparent ? "text-white/70" : "text-accent-500")}
-                  aria-hidden="true"
-                />
-                {formatUzPhone(firstPhone.number)}
-              </a>
-            ) : null}
+          <div className="hidden shrink-0 items-center gap-2.5 xl:flex">
             <LanguageSwitcher label={tHeader("languageLabel")} tone={transparent ? "light" : "dark"} />
             <Link
               href="/register"
-              className={buttonClasses({ variant: "primary", className: "shadow-none" })}
+              className={buttonClasses({
+                variant: "primary",
+                className: "whitespace-nowrap shadow-none",
+              })}
             >
               {t("register")}
             </Link>
@@ -157,7 +159,7 @@ export function SiteHeader({ data }: { data: HeaderData }) {
             </NextLink>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-2 xl:hidden">
             <LanguageSwitcher label={tHeader("languageLabel")} tone={transparent ? "light" : "dark"} />
             <button
               type="button"
@@ -195,7 +197,7 @@ function NavLink({
     <Link
       href={href}
       className={cn(
-        "rounded-pill px-3.5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500",
+        "whitespace-nowrap rounded-pill px-2.5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500",
         transparent
           ? "text-white/85 hover:bg-white/10 hover:text-white"
           : "text-ink-700 hover:bg-ink-100 hover:text-ink-900",
@@ -266,7 +268,7 @@ function DesktopDropdown({
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "inline-flex items-center gap-1 rounded-pill px-3.5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500",
+          "inline-flex items-center gap-1 whitespace-nowrap rounded-pill px-2.5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500",
           transparent
             ? "text-white/85 hover:bg-white/10 hover:text-white"
             : "text-ink-700 hover:bg-ink-100 hover:text-ink-900",

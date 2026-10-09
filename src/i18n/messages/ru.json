@@ -11,7 +11,8 @@
     "untilDate": "до {date}",
     "daysLeft": "{count, plural, one {Остался # день} few {Осталось # дня} many {Осталось # дней} other {Осталось # дня}}",
     "workingHours": "Часы работы",
-    "phoneNumbers": "Телефоны"
+    "phoneNumbers": "Телефоны",
+    "priceOnRequest": "Цена по запросу"
   },
   "nav": {
     "home": "Главная",
@@ -461,5 +462,33 @@
   },
   "breadcrumbs": {
     "home": "Главная"
+  },
+  "chat": {
+    "launcherLabel": "Чат с ИИ-помощником Turon",
+    "tooltip": "Здравствуйте! Есть вопросы о Turon Avto Maktab?",
+    "tooltipDismiss": "Закрыть",
+    "title": "Turon AI Assistant",
+    "online": "Онлайн",
+    "minimize": "Свернуть",
+    "close": "Закрыть",
+    "emptyTitle": "Напишите ваш вопрос",
+    "emptyBody": "Отвечу по курсам, ценам, филиалам и записи на обучение.",
+    "inputPlaceholder": "Напишите вопрос…",
+    "send": "Отправить",
+    "typing": "Печатает…",
+    "retry": "Повторить",
+    "disclaimer": "ИИ-помощник — важную информацию уточняйте в филиале.",
+    "suggestions": {
+      "prices": "Цены на курсы",
+      "branches": "Наши филиалы",
+      "enroll": "Как записаться",
+      "categories": "Какая категория мне нужна?",
+      "express": "Не сдал экзамен"
+    },
+    "errors": {
+      "rateLimited": "Слишком много сообщений. Подождите немного или позвоните нам.",
+      "unavailable": "Помощник сейчас недоступен. Пожалуйста, свяжитесь по телефону.",
+      "generic": "Не удалось получить ответ. Попробуйте ещё раз."
+    }
   }
 }

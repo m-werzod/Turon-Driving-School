@@ -10,13 +10,15 @@ import { cn } from "@/lib/cn";
  * active promo exists, the base price is struck through, the promo price is
  * emphasized, and the deadline is shown. Otherwise only the base price
  * renders. Expired promos are filtered out server-side by activePromo.
+ * A null basePrice means the school has not published a price: we say so
+ * plainly rather than showing a figure nobody confirmed.
  */
 export function PriceBlock({
   basePrice,
   promo,
   size = "md",
 }: {
-  basePrice: number;
+  basePrice: number | null;
   promo?: Promo;
   size?: "md" | "lg";
 }) {
@@ -28,6 +30,12 @@ export function PriceBlock({
     "font-bold tracking-tight text-ink-900",
     size === "lg" ? "text-3xl sm:text-4xl" : "text-2xl",
   );
+
+  if (basePrice === null) {
+    return (
+      <p className={cn(priceClass, "text-xl sm:text-2xl")}>{t("priceOnRequest")}</p>
+    );
+  }
 
   if (!active) {
     return <p className={priceClass}>{formatUzs(basePrice, locale)}</p>;

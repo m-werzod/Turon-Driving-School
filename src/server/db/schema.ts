@@ -251,6 +251,8 @@ export const branches = pgTable(
     landmark: jsonb("landmark").$type<Localized<string>>().notNull(),
     phones: text("phones").array().notNull(),
     hours: jsonb("hours").$type<Localized<string>>().notNull(),
+    /** Official Google Maps share link from the school; used verbatim. */
+    googleMapsUrl: text("google_maps_url"),
     lat: doublePrecision("lat"),
     lng: doublePrecision("lng"),
     hasAutodrome: boolean("has_autodrome").notNull().default(false),
@@ -282,8 +284,8 @@ export const categories = pgTable(
     audience: jsonb("audience").$type<Localized<string>>().notNull(),
     durationMonths: integer("duration_months").notNull(),
     minAge: integer("min_age").notNull(),
-    /** UZS. */
-    basePrice: integer("base_price").notNull(),
+    /** UZS; null when the school has not published a price yet. */
+    basePrice: integer("base_price"),
     promoPrice: integer("promo_price"),
     promoEndsOn: date("promo_ends_on"),
     included: jsonb("included").$type<Localized<string[]>>().notNull(),

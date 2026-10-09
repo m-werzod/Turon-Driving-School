@@ -9,23 +9,30 @@ const standardHours = {
 };
 
 /**
- * PROVISIONAL CONTENT — landmarks, offered categories and coordinates are
- * seeded from public knowledge of the locations and MUST be verified with the
- * client before launch (docs/OPEN_ITEMS.md #3, #11). Structure per TZ doc 04
- * §3.1 (7 branches, entity slugs shared across locales).
+ * Branch directory (TZ doc 04 §3.1).
+ *
+ * Location policy (docs/DECISIONS.md D-09) — locations are never
+ * approximated. A branch is locatable only from a source the school itself
+ * supplied: `googleMapsUrl` (the official share link, used verbatim, so the
+ * pin is exactly where staff dropped it) or `geo` (coordinates the school
+ * confirmed). Branches with neither show their landmark and phone but no
+ * directions buttons — a confidently wrong direction is worse than none.
+ * Four locations are school-confirmed; the rest are tracked in
+ * docs/OPEN_ITEMS.md #11.
  */
 export const branches: Branch[] = [
   {
     slug: "kosonsoy",
-    name: { uz: "Kosonsoy filiali", ru: "Филиал Касансай" },
+    name: { uz: "Kosonsoy markazi filiali", ru: "Филиал «Центр Касансая»" },
     district: { uz: "Kosonsoy tumani", ru: "Касансайский район" },
     landmark: {
-      uz: "Kosonsoy shahri, markaziy bozor yaqinida",
-      ru: "г. Касансай, рядом с центральным рынком",
+      uz: "Katta charxpalak oldida",
+      ru: "рядом с большим колесом обозрения",
     },
     phones: sharedPhones,
     hours: standardHours,
-    geo: { lat: 41.2561, lng: 71.5497 },
+    googleMapsUrl: "https://maps.app.goo.gl/sR7ztHrt53abtcZY7",
+    geo: null,
     categorySlugs: ["b", "bc", "a"],
     hasAutodrome: false,
   },
@@ -34,26 +41,28 @@ export const branches: Branch[] = [
     name: { uz: "Tergachi filiali", ru: "Филиал Тергачи" },
     district: { uz: "Namangan tumani", ru: "Наманганский район" },
     landmark: {
-      uz: "Tergachi qishlog'i, katta yo'l bo'yida",
-      ru: "село Тергачи, у главной дороги",
+      uz: "28-maktab oldida",
+      ru: "рядом со школой №28",
     },
     phones: sharedPhones,
     hours: standardHours,
-    geo: { lat: 41.0468, lng: 71.7108 },
+    googleMapsUrl: "https://maps.app.goo.gl/jZbFGpfQeGyVf9AJA",
+    geo: null,
     categorySlugs: ["b", "bc", "c"],
     hasAutodrome: false,
   },
   {
     slug: "buloq-avtodrom",
-    name: { uz: "Buloq filiali (avtodrom)", ru: "Филиал Булак (автодром)" },
+    name: { uz: "Buloq Post Smart avtodrom filiali", ru: "Филиал «Булак Post Smart автодром»" },
     district: { uz: "Namangan tumani", ru: "Наманганский район" },
     landmark: {
-      uz: "Buloq qishlog'i, Turon avtodromi hududida",
-      ru: "село Булак, на территории автодрома Turon",
+      uz: "Buloq Post, Smart avtodrom hududida",
+      ru: "Булак Пост, на территории автодрома Smart",
     },
     phones: sharedPhones,
     hours: standardHours,
-    geo: { lat: 41.0825, lng: 71.6329 },
+    googleMapsUrl: "https://maps.app.goo.gl/bWWXtugT6yzsbi2L6",
+    geo: null,
     categorySlugs: ["b", "bc", "c", "ce", "be", "d"],
     hasAutodrome: true,
   },
@@ -62,12 +71,13 @@ export const branches: Branch[] = [
     name: { uz: "Kamuna filiali", ru: "Филиал Камуна" },
     district: { uz: "Namangan tumani", ru: "Наманганский район" },
     landmark: {
-      uz: "Kamuna mahallasi, maktab ro'parasida",
-      ru: "махалля Камуна, напротив школы",
+      uz: "Kamuna mahallasi",
+      ru: "махалля Камуна",
     },
     phones: sharedPhones,
     hours: standardHours,
-    geo: { lat: 41.0619, lng: 71.6014 },
+    googleMapsUrl: null,
+    geo: null,
     categorySlugs: ["b", "bc"],
     hasAutodrome: false,
   },
@@ -76,12 +86,13 @@ export const branches: Branch[] = [
     name: { uz: "Bog'ishamol filiali", ru: "Филиал Богишамол" },
     district: { uz: "Namangan shahri", ru: "г. Наманган" },
     landmark: {
-      uz: "Bog'ishamol dahasi, avtobus bekati yonida",
-      ru: "массив Богишамол, рядом с автобусной остановкой",
+      uz: "Bog'ishamol dahasi",
+      ru: "массив Богишамол",
     },
     phones: sharedPhones,
     hours: standardHours,
-    geo: { lat: 41.0203, lng: 71.6512 },
+    googleMapsUrl: null,
+    geo: null,
     categorySlugs: ["b", "bc", "a"],
     hasAutodrome: false,
   },
@@ -90,12 +101,13 @@ export const branches: Branch[] = [
     name: { uz: "Namangan shahar filiali", ru: "Филиал в г. Наманган" },
     district: { uz: "Namangan shahri, markaz", ru: "г. Наманган, центр" },
     landmark: {
-      uz: "Namangan shahri markazi, amfiteatr yaqinida",
-      ru: "центр г. Наманган, рядом с амфитеатром",
+      uz: "1-Mikrorayon, Texnika universitetidan 150 m pastda",
+      ru: "1-й микрорайон, 150 м ниже Технического университета",
     },
     phones: sharedPhones,
     hours: standardHours,
-    geo: { lat: 41.0011, lng: 71.6725 },
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=41.009022,71.591299",
+    geo: { lat: 41.009022, lng: 71.591299 },
     categorySlugs: ["b", "bc", "c", "be"],
     hasAutodrome: false,
   },
@@ -104,12 +116,13 @@ export const branches: Branch[] = [
     name: { uz: "To'raqo'rg'on filiali", ru: "Филиал Туракурган" },
     district: { uz: "To'raqo'rg'on tumani", ru: "Туракурганский район" },
     landmark: {
-      uz: "To'raqo'rg'on shahri, markaziy ko'chada",
-      ru: "г. Туракурган, на центральной улице",
+      uz: "To'raqo'rg'on shahri",
+      ru: "г. Туракурган",
     },
     phones: sharedPhones,
     hours: standardHours,
-    geo: { lat: 41.0049, lng: 71.5173 },
+    googleMapsUrl: null,
+    geo: null,
     categorySlugs: ["b", "bc", "c"],
     hasAutodrome: false,
   },

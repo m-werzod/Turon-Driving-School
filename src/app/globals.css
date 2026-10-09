@@ -77,6 +77,9 @@
   --animate-marquee: marquee 32s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-jump: jump 2.6s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+  --animate-chat-in: chat-in 0.32s var(--ease-premium) both;
+  --animate-bubble-in: bubble-in 0.28s var(--ease-premium) both;
+  --animate-glow-pulse: glow-pulse 3.2s ease-in-out infinite;
 
   @keyframes fade-up {
     from {
@@ -114,6 +117,42 @@
     80% {
       transform: translateY(-12px);
     }
+
+  @keyframes chat-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes bubble-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Breathing halo behind the chat launcher — opacity/transform only, so it
+     stays on the compositor and never costs a layout. */
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      opacity: 0.45;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(1.18);
+    }
+  }
     88% {
       transform: translateY(0);
     }
@@ -247,7 +286,10 @@ body {
   .animate-float,
   .animate-marquee,
   .animate-jump,
-  .animate-ping {
+  .animate-ping,
+  .animate-chat-in,
+  .animate-bubble-in,
+  .animate-glow-pulse {
     animation: none !important;
   }
 }

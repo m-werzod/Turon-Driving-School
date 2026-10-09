@@ -33,8 +33,11 @@ export interface Category {
   audience: Localized;
   durationMonths: number;
   minAge: number;
-  /** Base price in UZS. */
-  basePrice: number;
+  /**
+   * Base price in UZS, or null when the school has not published one yet.
+   * Null renders as "price on request" — never substitute a guessed figure.
+   */
+  basePrice: number | null;
   promo?: Promo;
   included: Localized<string[]>;
   curriculum: Localized<string[]>;
@@ -65,7 +68,17 @@ export interface Branch {
   /** E.164 numbers, e.g. +998901234567. */
   phones: string[];
   hours: Localized;
-  /** Approximate until verified (docs/OPEN_ITEMS.md #11). */
+  /**
+   * Official Google Maps share link supplied by the school. Used verbatim so
+   * the pin is exactly the one staff dropped — never a re-derived guess.
+   * Authoritative: takes precedence over `geo` for the Google deep link.
+   */
+  googleMapsUrl: string | null;
+  /**
+   * Verified coordinates. Null when unconfirmed — never approximated.
+   * Drives the Yandex deep link, the embedded map and the schema.org
+   * GeoCoordinates node, all of which are omitted when this is null.
+   */
   geo: { lat: number; lng: number } | null;
   categorySlugs: string[];
   hasAutodrome: boolean;

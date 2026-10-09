@@ -75,3 +75,62 @@ coordinates and a tile-provider decision with CSP/performance implications
 (docs 07 §9, 17 §8) — deferred to the media/maps milestone rather than shipping
 an unverified embed. The hub meanwhile renders the full branch card list, which
 satisfies the routing goal of the page.
+
+
+## D-13 Chat assistant replaces the floating call button
+
+The bottom-right floating slot now holds the AI assistant, not a `tel:` link.
+Calling did not get harder: the mobile sticky action bar still carries a
+one-tap call, and every phone number remains in the footer, on the contact
+page, on each branch page and in the mobile overlay menu. One floating
+element is a deliberate limit — two competing circular buttons in the same
+corner is the pattern this replaces.
+
+**Grounding.** The model is given no business facts in its prompt. Every
+claim must come from a tool call, and the tools (`src/server/ai/tools.ts`)
+read through the same content service the pages use, so the assistant cannot
+drift from what the site shows. Readers return an explicit `NOT_PUBLISHED`
+marker instead of omitting a field, and the prompt requires the model to
+report that as "not published" rather than fill the gap. Prices are re-read
+on every question, never reused from earlier in the conversation.
+
+**What it cannot do.** The platform has no student accounts, payments,
+attendance or schedules (`src/server/db/schema.ts` has leads and staff users
+only). There is therefore no reader for personal data and nothing private to
+leak through this endpoint, and the prompt states plainly that these
+features do not exist so the model cannot imply otherwise. The assistant
+informs; it never claims to have performed an action.
+
+**Security.** The API key is server-only. The tool surface is a closed set
+with Zod-validated arguments — no SQL, no free-form queries, no way to widen
+a scope. Visitor text is framed as data in the system prompt, with explicit
+instructions to decline attempts to override the rules or reveal the prompt.
+The endpoint is rate-limited per IP (20 requests / 5 min, looser than the
+lead form's 5 / 10 min because chat is naturally chattier), history is
+capped, and the tool loop is bounded at four rounds with tools withdrawn on
+the final round so it must answer with what it has.
+
+**No streaming.** Answers wait on tool results anyway, so the first token
+could not arrive earlier; a plain request/response with a typing indicator is
+simpler and has fewer failure modes than a streamed tool loop. Revisit if
+answers ever grow long enough for progressive rendering to matter.
+
+## D-14 Header: desktop nav at xl, phone number dropped from the row
+
+The desktop header needs about 1080px before six nav items, the locale
+switcher and the CTA start colliding. At lg it was silently overlapping —
+"Galereya" and "Biz haqimizda" sat behind the switcher. The full row now
+appears at xl (1280px); below that the overlay menu carries the same
+navigation, so nothing becomes unreachable.
+
+The phone number is no longer in the header. The row is capped at
+`max-w-7xl`, so a wider viewport gives it no extra room, and even at 1920px
+it overflowed the nav by ~65px. Widening the container only at 2xl was
+tried and rejected: it made the header inconsistent with page content and
+still left the nav tight. The number stays one tap away in the footer, on
+the contact page, on every branch page, in the mobile menu and in the mobile
+action bar.
+
+Related: the wordmark now shows "Turon" alone below `sm`. The full
+"Turon Avtomaktab" was pushing the mobile header ~21px past the viewport —
+a pre-existing horizontal overflow, measured at 320-414px.

@@ -5,9 +5,87 @@ import type { Category } from "./types";
  * announcement, 2026-07-22; promo runs through end of July). Durations and
  * age/stage requirements remain seed values pending confirmation
  * (docs/OPEN_ITEMS.md #1). Structure per TZ doc 04 §3.2 — 7 categories; the
- * E namespace stays reserved until the client confirms a price for it.
+ * E category is listed without a price until the client confirms one;
+ * it renders as "price on request" rather than showing a guessed figure.
  */
 export const categories: Category[] = [
+  {
+    slug: "a",
+    code: "A",
+    name: { uz: "A toifa", ru: "Категория A" },
+    tagline: {
+      uz: "Mototsikllar",
+      ru: "Мотоциклы",
+    },
+    audience: {
+      uz: "Mototsikl haydashni xavfsiz va professional o'rganmoqchi bo'lganlar uchun.",
+      ru: "Для тех, кто хочет безопасно и профессионально освоить мотоцикл.",
+    },
+    durationMonths: 1.5,
+    minAge: 18,
+    basePrice: 1_725_000,
+    promo: { price: 1_450_000, endsOn: "2026-07-31" },
+    included: {
+      uz: [
+        "To'liq nazariy kurs",
+        "Himoya jihozlari bilan amaliy mashg'ulotlar",
+        "Avtodromda manyovr elementlari",
+        "Imtihonga tayyorlov",
+      ],
+      ru: [
+        "Полный теоретический курс",
+        "Практика в защитной экипировке",
+        "Элементы манёвров на автодроме",
+        "Подготовка к экзамену",
+      ],
+    },
+    curriculum: {
+      uz: [
+        "Yo'l harakati qoidalari",
+        "Mototsikl boshqaruvi asoslari",
+        "Muvozanat va past tezlikdagi manyovrlar",
+        "Avtodromdagi imtihon elementlari",
+      ],
+      ru: [
+        "Правила дорожного движения",
+        "Основы управления мотоциклом",
+        "Баланс и манёвры на малой скорости",
+        "Экзаменационные элементы на автодроме",
+      ],
+    },
+    requirements: {
+      uz: [
+        "Yosh: 18 dan boshlab",
+        "Pasport yoki ID karta",
+        "Tibbiy ma'lumotnoma (083-shakl)",
+        "3.5×4.5 sm o'lchamdagi 4 ta foto",
+      ],
+      ru: [
+        "Возраст: с 18 лет",
+        "Паспорт или ID-карта",
+        "Медицинская справка (форма 083)",
+        "4 фото размером 3.5×4.5 см",
+      ],
+    },
+    vehicles: {
+      uz: ["O'quv mototsikllari"],
+      ru: ["Учебные мотоциклы"],
+    },
+    branchSlugs: ["kosonsoy", "bogishamol"],
+    faq: [
+      {
+        question: {
+          uz: "Himoya jihozlari beriladimi?",
+          ru: "Выдаётся ли защитная экипировка?",
+        },
+        answer: {
+          uz: "Ha, amaliy mashg'ulotlarda dubulg'a va himoya jihozlari avtomaktab tomonidan beriladi.",
+          ru: "Да, на практических занятиях шлем и защитную экипировку предоставляет автошкола.",
+        },
+      },
+    ],
+    relatedSlugs: ["b"],
+  },
   {
     slug: "b",
     code: "B",
@@ -428,81 +506,82 @@ export const categories: Category[] = [
     relatedSlugs: ["b", "ce"],
   },
   {
-    slug: "a",
-    code: "A",
-    name: { uz: "A toifa", ru: "Категория A" },
+    slug: "e",
+    code: "E",
+    name: { uz: "E toifa", ru: "Категория E" },
     tagline: {
-      uz: "Mototsikllar",
-      ru: "Мотоциклы",
+      uz: "Tirkama bilan haydash huquqi",
+      ru: "Право управления с прицепом",
     },
     audience: {
-      uz: "Mototsikl haydashni xavfsiz va professional o'rganmoqchi bo'lganlar uchun.",
-      ru: "Для тех, кто хочет безопасно и профессионально освоить мотоцикл.",
+      uz: "Mavjud toifasiga tirkama bilan haydash huquqini qo'shmoqchi bo'lgan haydovchilar uchun.",
+      ru: "Для водителей, которые хотят добавить к своей категории право управления с прицепом.",
     },
-    durationMonths: 1.5,
-    minAge: 18,
-    basePrice: 1_725_000,
-    promo: { price: 1_450_000, endsOn: "2026-07-31" },
+    durationMonths: 1,
+    minAge: 19,
+    // Price not yet published by the school — rendered as "price on request"
+    // until confirmed (docs/OPEN_ITEMS.md #1). Never guess a price.
+    basePrice: null,
     included: {
       uz: [
-        "To'liq nazariy kurs",
-        "Himoya jihozlari bilan amaliy mashg'ulotlar",
-        "Avtodromda manyovr elementlari",
+        "Tirkamali tarkib bilan ishlash nazariyasi",
+        "Avtodromda tirkama bilan manyovr amaliyoti",
+        "Yo'l amaliyoti",
         "Imtihonga tayyorlov",
       ],
       ru: [
-        "Полный теоретический курс",
-        "Практика в защитной экипировке",
-        "Элементы манёвров на автодроме",
+        "Теория работы с прицепным составом",
+        "Практика манёвров с прицепом на автодроме",
+        "Практика на дороге",
         "Подготовка к экзамену",
       ],
     },
     curriculum: {
       uz: [
-        "Yo'l harakati qoidalari",
-        "Mototsikl boshqaruvi asoslari",
-        "Muvozanat va past tezlikdagi manyovrlar",
-        "Avtodromdagi imtihon elementlari",
+        "Tirkamani ulash va texnik tekshiruv",
+        "Yuk joylashtirish va mahkamlash",
+        "Orqaga yurish va tor joyda manyovr",
+        "Tormozlanish masofasi va xavfsiz tezlik",
       ],
       ru: [
-        "Правила дорожного движения",
-        "Основы управления мотоциклом",
-        "Баланс и манёвры на малой скорости",
-        "Экзаменационные элементы на автодроме",
+        "Сцепка прицепа и технический осмотр",
+        "Размещение и крепление груза",
+        "Движение задним ходом и манёвры в узких местах",
+        "Тормозной путь и безопасная скорость",
       ],
     },
     requirements: {
       uz: [
-        "Yosh: 18 dan boshlab",
+        "Mavjud haydovchilik guvohnomasi va kamida 1 yil staj",
         "Pasport yoki ID karta",
         "Tibbiy ma'lumotnoma (083-shakl)",
         "3.5×4.5 sm o'lchamdagi 4 ta foto",
       ],
       ru: [
-        "Возраст: с 18 лет",
+        "Имеющиеся водительские права и стаж от 1 года",
         "Паспорт или ID-карта",
         "Медицинская справка (форма 083)",
         "4 фото размером 3.5×4.5 см",
       ],
     },
     vehicles: {
-      uz: ["O'quv mototsikllari"],
-      ru: ["Учебные мотоциклы"],
+      uz: ["Tirkamali o'quv tarkibi"],
+      ru: ["Учебный состав с прицепом"],
     },
-    branchSlugs: ["kosonsoy", "bogishamol"],
+    branchSlugs: ["buloq-avtodrom"],
     faq: [
       {
         question: {
-          uz: "Himoya jihozlari beriladimi?",
-          ru: "Выдаётся ли защитная экипировка?",
+          uz: "E toifa narxi qancha?",
+          ru: "Сколько стоит категория E?",
         },
         answer: {
-          uz: "Ha, amaliy mashg'ulotlarda dubulg'a va himoya jihozlari avtomaktab tomonidan beriladi.",
-          ru: "Да, на практических занятиях шлем и защитную экипировку предоставляет автошкола.",
+          uz: "E toifa narxi hozircha e'lon qilinmagan. Aniq narx va shartlarni bilish uchun qabul bo'limiga qo'ng'iroq qiling.",
+          ru: "Цена категории E пока не опубликована. Для уточнения стоимости и условий позвоните в приёмную.",
         },
       },
     ],
-    relatedSlugs: ["b"],
+    relatedSlugs: ["be", "ce"],
   },
   {
     slug: "d",

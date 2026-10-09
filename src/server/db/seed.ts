@@ -99,6 +99,7 @@ async function seedBranches(db: Db): Promise<Map<string, string>> {
         landmark: branch.landmark,
         phones: branch.phones,
         hours: branch.hours,
+        googleMapsUrl: branch.googleMapsUrl,
         lat: branch.geo?.lat ?? null,
         lng: branch.geo?.lng ?? null,
         hasAutodrome: branch.hasAutodrome,

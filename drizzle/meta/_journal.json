@@ -15,6 +15,13 @@
       "when": 1785864352038,
       "tag": "0001_wonderful_monster_badoon",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791567305818,
+      "tag": "0002_graceful_gateway",
+      "breakpoints": true
     }
   ]
 }
