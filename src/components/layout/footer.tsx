@@ -23,6 +23,7 @@ export function SiteFooter({ data }: { data: FooterData }) {
     "/pricing": t("nav.pricing"),
     "/branches": t("nav.branches"),
     "/results": t("nav.results"),
+    "/news": t("nav.news"),
   };
 
   return (

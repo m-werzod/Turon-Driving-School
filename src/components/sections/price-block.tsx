@@ -1,15 +1,17 @@
 import { useLocale, useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
-import { formatUzs, formatDeadline } from "@/lib/format";
+import { formatUzs } from "@/lib/format";
 import { activePromo } from "@/lib/promo";
 import type { ContentLocale, Promo } from "@/content/types";
 import { cn } from "@/lib/cn";
 
 /**
  * Price display with promo handling (TZ template T-03 price block): when an
- * active promo exists, the base price is struck through, the promo price is
- * emphasized, and the deadline is shown. Otherwise only the base price
- * renders. Expired promos are filtered out server-side by activePromo.
+ * active promo exists, the base price is struck through and the promo price
+ * is emphasized under a "Chegirma" badge (no deadline text in the badge
+ * itself — the countdown on the promo band carries that). Otherwise only the
+ * base price renders. Expired promos are filtered out server-side by
+ * activePromo.
  * A null basePrice means the school has not published a price: we say so
  * plainly rather than showing a figure nobody confirmed.
  */
@@ -54,9 +56,7 @@ export function PriceBlock({
           {formatUzs(basePrice, locale)}
         </span>
       </div>
-      <Badge tone="accent">
-        {t("promo")} · {t("untilDate", { date: formatDeadline(active.endsOn, locale) })}
-      </Badge>
+      <Badge tone="accent">{t("promo")}</Badge>
     </div>
   );
 }

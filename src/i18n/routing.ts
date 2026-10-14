@@ -28,6 +28,7 @@ export const routing = defineRouting({
     "/branches/[slug]": { uz: "/filiallar/[slug]", ru: "/filialy/[slug]" },
     "/results": { uz: "/natijalar", ru: "/rezultaty" },
     "/gallery": { uz: "/galereya", ru: "/galereya" },
+    "/news": { uz: "/yangiliklar", ru: "/novosti" },
     "/about": { uz: "/biz-haqimizda", ru: "/o-nas" },
     "/faq": { uz: "/savol-javob", ru: "/faq" },
     "/contact": { uz: "/aloqa", ru: "/kontakty" },

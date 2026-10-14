@@ -146,6 +146,11 @@ export function MobileMenu({
               </MenuTopLink>
             </li>
             <li>
+              <MenuTopLink href="/news" onClick={onClose}>
+                {t("news")}
+              </MenuTopLink>
+            </li>
+            <li>
               <MenuTopLink href="/about" onClick={onClose}>
                 {t("about")}
               </MenuTopLink>

@@ -16,6 +16,13 @@ import { cn } from "@/lib/cn";
  * bar (which still carries the one-tap call) and respects safe-area insets,
  * so the two never collide and calling is never more than one tap away.
  *
+ * Launcher shape is a rounded square (squircle), not a circle, with a
+ * continuous gentle bounce + glow halo while closed — reuses the same
+ * animate-jump bounce the old call button used, which already proved
+ * attention-grabbing without being obnoxious. Both animations stop the
+ * instant the panel opens and are neutralized under prefers-reduced-motion
+ * (globals.css).
+ *
  * All knowledge comes from POST /api/chat, which grounds every answer in the
  * platform's own content service; this component holds no business facts.
  */
@@ -213,22 +220,27 @@ export function ChatWidget() {
           aria-label={t("launcherLabel")}
           aria-expanded={open}
           aria-haspopup="dialog"
-          className="group relative grid size-15 place-items-center rounded-full bg-linear-to-br from-brand-500 via-brand-600 to-brand-900 text-white shadow-(--shadow-glow-brand) ring-4 ring-white/40 transition-transform duration-300 ease-premium hover:scale-110 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600"
+          className={cn(
+            "group relative grid size-16 place-items-center rounded-[20px] bg-linear-to-br from-brand-500 via-brand-600 to-brand-900 text-white shadow-(--shadow-glow-brand) ring-4 ring-white/40 transition-transform duration-300 ease-premium hover:scale-110 hover:rotate-3 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600",
+            // A gentle periodic bounce draws the eye while closed; stops the
+            // instant the panel opens so it never competes with the chat UI.
+            !open && "animate-jump",
+          )}
         >
           <span
             aria-hidden="true"
-            className="animate-glow-pulse absolute inset-0 -z-10 rounded-full bg-brand-500/70 blur-md"
+            className="animate-glow-pulse absolute inset-0 -z-10 rounded-[26px] bg-brand-500/70 blur-md"
           />
           {open ? (
             <X className="size-6" aria-hidden="true" />
           ) : (
-            <SparkleIcon className="size-7" />
+            <SparkleIcon className="size-7 animate-float" style={{ animationDuration: "3.5s" }} />
           )}
           {/* Online dot */}
           {!open ? (
             <span
               aria-hidden="true"
-              className="absolute -right-0.5 -top-0.5 size-4 rounded-full border-2 border-white bg-emerald-500"
+              className="absolute -right-1 -top-1 size-4 rounded-full border-2 border-white bg-emerald-500"
             />
           ) : null}
         </button>

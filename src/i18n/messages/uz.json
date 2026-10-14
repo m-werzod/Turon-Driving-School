@@ -7,7 +7,7 @@
     "viewAll": "Barchasini ko'rish",
     "priceFrom": "{price} dan boshlab",
     "months": "{months} oy",
-    "promo": "Aksiya",
+    "promo": "Chegirma",
     "untilDate": "{date} gacha",
     "daysLeft": "{count} kun qoldi",
     "workingHours": "Ish vaqti",
@@ -27,7 +27,8 @@
     "contact": "Aloqa",
     "register": "Ro'yxatdan o'tish",
     "privacy": "Maxfiylik siyosati",
-    "admin": "Admin"
+    "admin": "Admin",
+    "news": "Yangiliklar"
   },
   "header": {
     "openMenu": "Menyuni ochish",
@@ -489,6 +490,18 @@
       "rateLimited": "Juda ko'p savol yubordingiz. Biroz kuting yoki bizga qo'ng'iroq qiling.",
       "unavailable": "Yordamchi hozircha ishlamayapti. Iltimos, telefon orqali bog'laning.",
       "generic": "Javob olishda xatolik yuz berdi. Qayta urinib ko'ring."
+    }
+  },
+  "newsPage": {
+    "meta": {
+      "title": "Yangiliklar — Turon Avtomaktab",
+      "description": "Turon Avtomaktab hayotidan so'nggi yangiliklar: bitiruv marosimlari va tadbirlar."
+    },
+    "title": "Yangiliklar",
+    "intro": "Avtomaktabimiz hayotidan so'nggi yangiliklar va tadbirlar.",
+    "empty": {
+      "title": "Hozircha yangilik yo'q",
+      "body": "Tez orada bu yerda so'nggi yangiliklar va tadbirlar e'lon qilinadi."
     }
   }
 }

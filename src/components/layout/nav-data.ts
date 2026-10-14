@@ -51,4 +51,5 @@ export const FOOTER_PAGE_LINKS = [
   "/pricing",
   "/branches",
   "/results",
+  "/news",
 ] as const;

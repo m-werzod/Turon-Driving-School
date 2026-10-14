@@ -3,6 +3,7 @@ import { categories } from "@/content/categories";
 import { expressCourses } from "@/content/express";
 import { faqItems } from "@/content/faq";
 import { galleryAlbums } from "@/content/gallery";
+import { newsPosts } from "@/content/news";
 import { resultPosts } from "@/content/results";
 import { settings } from "@/content/settings";
 import { testimonials } from "@/content/testimonials";
@@ -12,6 +13,7 @@ import type {
   ExpressCourse,
   FaqItem,
   GalleryAlbum,
+  NewsPost,
   ResultPost,
   SiteSettings,
   Testimonial,
@@ -64,6 +66,11 @@ export async function getTestimonials(): Promise<Testimonial[]> {
 
 export async function getGalleryAlbums(): Promise<GalleryAlbum[]> {
   return galleryAlbums;
+}
+
+/** News posts, in the order they should render (newest first). */
+export async function getNewsPosts(): Promise<NewsPost[]> {
+  return newsPosts;
 }
 
 export async function getSettings(): Promise<SiteSettings> {

@@ -144,6 +144,21 @@ export interface GalleryAlbum {
   items: MediaItem[];
 }
 
+/**
+ * A single News/Yangiliklar entry. Deliberately simple — a title, a short
+ * factual body, and one piece of real media. No author, no tags, no rich
+ * text: those belong to the full CMS-driven news system the TZ scopes for a
+ * later milestone (docs/DECISIONS.md D-15). Until then this is the typed
+ * content source, read through the same content-service boundary as
+ * everything else.
+ */
+export interface NewsPost {
+  id: string;
+  title: Localized;
+  body: Localized;
+  media: MediaItem;
+}
+
 export interface SiteSettings {
   brandName: string;
   phones: { number: string; label: Localized }[];
