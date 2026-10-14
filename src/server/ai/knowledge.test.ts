@@ -20,9 +20,11 @@ describe("knowledge readers are grounded in platform content", () => {
     }
   });
 
-  it("flags the E category price as unpublished rather than inventing one", async () => {
+  it("treats the reserved, not-sold E category as unknown rather than inventing it", async () => {
+    // E is deliberately absent from the catalogue (client confirmed it is
+    // not sold); the assistant must say it doesn't know it, not describe it.
     const detail = await getCategoryDetail("e", "uz");
-    expect("status" in detail && detail.status).toBe("NOT_PUBLISHED");
+    expect("error" in detail && detail.error).toBe("NOT_FOUND");
   });
 
   it("returns a recoverable error for an unknown category", async () => {

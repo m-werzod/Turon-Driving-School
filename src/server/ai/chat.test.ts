@@ -76,10 +76,11 @@ describe("runChatTurn", () => {
     const payload = toolResultMessage.content[0];
     expect(payload.type).toBe("tool_result");
     expect(payload.tool_use_id).toBe("tu_1");
-    // Real content, not a fixture: the catalogue starts at A and ends at D.
+    // Real content, not a fixture: the catalogue starts at A and ends at D,
+    // with no E (reserved, not sold — dropped from the catalogue entirely).
     expect(payload.content).toContain('"code":"A"');
     expect(payload.content).toContain('"code":"D"');
-    expect(payload.content).toContain('"code":"E"');
+    expect(payload.content).not.toContain('"code":"E"');
   });
 
   it("passes an invalid tool argument back as a recoverable error", async () => {

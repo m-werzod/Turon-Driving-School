@@ -84,7 +84,7 @@ export const TOOLS: Record<string, ToolDef> = {
         properties: {
           slug: {
             type: "string",
-            description: "Category slug, e.g. 'b', 'bc', 'ce', 'a', 'd', 'e'.",
+            description: "Category slug, e.g. 'a', 'b', 'be', 'bc', 'c', 'ce', 'd'.",
           },
         },
         required: ["slug"],

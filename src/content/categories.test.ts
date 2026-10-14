@@ -2,12 +2,14 @@ import { describe, expect, it } from "vitest";
 import { categories } from "./categories";
 
 describe("category catalogue", () => {
-  it("is ordered A first and D last, with E included", () => {
+  it("is ordered per the client's explicit instruction: A, B, BE, BC, C, CE, D", () => {
     const codes = categories.map((c) => c.code);
-    expect(codes[0]).toBe("A");
-    expect(codes[codes.length - 1]).toBe("D");
-    expect(codes).toContain("E");
-    expect(codes).toEqual(["A", "B", "BC", "C", "CE", "BE", "E", "D"]);
+    expect(codes).toEqual(["A", "B", "BE", "BC", "C", "CE", "D"]);
+  });
+
+  it("does not include the E category — reserved, not sold", () => {
+    expect(categories.some((c) => c.slug === "e")).toBe(false);
+    expect(categories.some((c) => c.code === "E")).toBe(false);
   });
 
   it("has unique slugs and codes", () => {
@@ -22,6 +24,15 @@ describe("category catalogue", () => {
           .not.toBeNull();
       }
     }
+  });
+
+  it("A and B carry exactly the client-confirmed promo pricing", () => {
+    const a = categories.find((c) => c.code === "A");
+    const b = categories.find((c) => c.code === "B");
+    expect(a?.basePrice).toBe(1_725_000);
+    expect(a?.promo?.price).toBe(1_450_000);
+    expect(b?.basePrice).toBe(5_883_000);
+    expect(b?.promo?.price).toBe(5_050_000);
   });
 
   it("only references categories that exist in relatedSlugs", () => {

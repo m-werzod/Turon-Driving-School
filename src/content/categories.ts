@@ -2,11 +2,20 @@ import type { Category } from "./types";
 
 /**
  * Prices are the real, client-provided July price list (Telegram
- * announcement, 2026-07-22; promo runs through end of July). Durations and
- * age/stage requirements remain seed values pending confirmation
- * (docs/OPEN_ITEMS.md #1). Structure per TZ doc 04 §3.2 — 7 categories; the
- * E category is listed without a price until the client confirms one;
- * it renders as "price on request" rather than showing a guessed figure.
+ * announcement, 2026-07-22). Durations and age/stage requirements remain
+ * seed values pending confirmation (docs/OPEN_ITEMS.md #1).
+ *
+ * Order is fixed per the client's explicit instruction (2026-10-14): A, B,
+ * BE, BC, C, CE, D. The E category is deliberately NOT in this array — the
+ * client confirmed it is not sold (reserved namespace only, per TZ doc 04
+ * §12); it was briefly added in an earlier pass and is now removed again to
+ * match that decision. /toifalar/e renders the ordinary 404.
+ *
+ * Promo deadlines (`endsOn`) are a PLACEHOLDER extension to 2026-10-31 —
+ * the original 2026-07-31 date had lapsed, which silently dropped every
+ * discount to its flat base price (activePromo() correctly honors expiry).
+ * The discounted prices themselves are real; only this deadline needs the
+ * client's confirmation. See docs/OPEN_ITEMS.md.
  */
 export const categories: Category[] = [
   {
@@ -24,7 +33,7 @@ export const categories: Category[] = [
     durationMonths: 1.5,
     minAge: 18,
     basePrice: 1_725_000,
-    promo: { price: 1_450_000, endsOn: "2026-07-31" },
+    promo: { price: 1_450_000, endsOn: "2026-10-31" },
     included: {
       uz: [
         "To'liq nazariy kurs",
@@ -101,7 +110,7 @@ export const categories: Category[] = [
     durationMonths: 2,
     minAge: 18,
     basePrice: 5_883_000,
-    promo: { price: 5_050_000, endsOn: "2026-07-31" },
+    promo: { price: 5_050_000, endsOn: "2026-10-31" },
     included: {
       uz: [
         "To'liq nazariy kurs — yo'l harakati qoidalari va xavfsizlik asoslari",
@@ -186,6 +195,83 @@ export const categories: Category[] = [
     relatedSlugs: ["bc", "a"],
   },
   {
+    slug: "be",
+    code: "BE",
+    name: { uz: "BE toifa", ru: "Категория BE" },
+    tagline: {
+      uz: "Tirkamali yengil avtomobillar",
+      ru: "Легковые с прицепом",
+    },
+    audience: {
+      uz: "Og'ir tirkama bilan yurishi kerak bo'lgan B toifa haydovchilari uchun.",
+      ru: "Для водителей категории B, которым нужен тяжёлый прицеп.",
+    },
+    durationMonths: 1,
+    minAge: 19,
+    basePrice: 1_725_000,
+    promo: { price: 1_450_000, endsOn: "2026-10-31" },
+    included: {
+      uz: [
+        "Tirkama bilan ishlash nazariyasi",
+        "Avtodromda amaliy mashg'ulotlar",
+        "Yo'l amaliyoti",
+        "Imtihonga tayyorlov",
+      ],
+      ru: [
+        "Теория работы с прицепом",
+        "Практика на автодроме",
+        "Практика на дороге",
+        "Подготовка к экзамену",
+      ],
+    },
+    curriculum: {
+      uz: [
+        "Tirkama ulash va yuk joylash",
+        "Orqaga yurish va burilishlar",
+        "Tormozlanish masofasi va tezlik rejimi",
+        "Yo'lda xavfsiz harakatlanish",
+      ],
+      ru: [
+        "Сцепка прицепа и размещение груза",
+        "Движение задним ходом и повороты",
+        "Тормозной путь и скоростной режим",
+        "Безопасное движение по дороге",
+      ],
+    },
+    requirements: {
+      uz: [
+        "B toifadagi guvohnoma va kamida 1 yil staj",
+        "Pasport yoki ID karta",
+        "Tibbiy ma'lumotnoma (083-shakl)",
+        "3.5×4.5 sm o'lchamdagi 4 ta foto",
+      ],
+      ru: [
+        "Права категории B и стаж от 1 года",
+        "Паспорт или ID-карта",
+        "Медицинская справка (форма 083)",
+        "4 фото размером 3.5×4.5 см",
+      ],
+    },
+    vehicles: {
+      uz: ["Tirkamali Chevrolet Cobalt"],
+      ru: ["Chevrolet Cobalt с прицепом"],
+    },
+    branchSlugs: ["buloq-avtodrom", "namangan-shahar"],
+    faq: [
+      {
+        question: {
+          uz: "BE toifa kimlarga kerak bo'ladi?",
+          ru: "Кому нужна категория BE?",
+        },
+        answer: {
+          uz: "Umumiy massasi 750 kg dan ortiq tirkamani B toifadagi avtomobil bilan tortish uchun BE toifasi talab qilinadi.",
+          ru: "Категория BE требуется, чтобы буксировать легковым автомобилем прицеп массой свыше 750 кг.",
+        },
+      },
+    ],
+    relatedSlugs: ["b", "ce"],
+  },
+  {
     slug: "bc",
     code: "BC",
     name: { uz: "BC toifa", ru: "Категория BC" },
@@ -200,7 +286,7 @@ export const categories: Category[] = [
     durationMonths: 3,
     minAge: 18,
     basePrice: 7_300_000,
-    promo: { price: 6_450_000, endsOn: "2026-07-31" },
+    promo: { price: 6_450_000, endsOn: "2026-10-31" },
     included: {
       uz: [
         "B va C toifalari uchun to'liq nazariy kurs",
@@ -287,7 +373,7 @@ export const categories: Category[] = [
     durationMonths: 2.5,
     minAge: 18,
     basePrice: 3_200_000,
-    promo: { price: 2_850_000, endsOn: "2026-07-31" },
+    promo: { price: 2_850_000, endsOn: "2026-10-31" },
     included: {
       uz: [
         "To'liq nazariy kurs",
@@ -366,7 +452,7 @@ export const categories: Category[] = [
     durationMonths: 1.5,
     minAge: 19,
     basePrice: 3_200_000,
-    promo: { price: 2_950_000, endsOn: "2026-07-31" },
+    promo: { price: 2_950_000, endsOn: "2026-10-31" },
     included: {
       uz: [
         "Tirkamali tarkib bilan ishlash nazariyasi",
@@ -429,161 +515,6 @@ export const categories: Category[] = [
     relatedSlugs: ["c", "be"],
   },
   {
-    slug: "be",
-    code: "BE",
-    name: { uz: "BE toifa", ru: "Категория BE" },
-    tagline: {
-      uz: "Tirkamali yengil avtomobillar",
-      ru: "Легковые с прицепом",
-    },
-    audience: {
-      uz: "Og'ir tirkama bilan yurishi kerak bo'lgan B toifa haydovchilari uchun.",
-      ru: "Для водителей категории B, которым нужен тяжёлый прицеп.",
-    },
-    durationMonths: 1,
-    minAge: 19,
-    basePrice: 1_725_000,
-    promo: { price: 1_450_000, endsOn: "2026-07-31" },
-    included: {
-      uz: [
-        "Tirkama bilan ishlash nazariyasi",
-        "Avtodromda amaliy mashg'ulotlar",
-        "Yo'l amaliyoti",
-        "Imtihonga tayyorlov",
-      ],
-      ru: [
-        "Теория работы с прицепом",
-        "Практика на автодроме",
-        "Практика на дороге",
-        "Подготовка к экзамену",
-      ],
-    },
-    curriculum: {
-      uz: [
-        "Tirkama ulash va yuk joylash",
-        "Orqaga yurish va burilishlar",
-        "Tormozlanish masofasi va tezlik rejimi",
-        "Yo'lda xavfsiz harakatlanish",
-      ],
-      ru: [
-        "Сцепка прицепа и размещение груза",
-        "Движение задним ходом и повороты",
-        "Тормозной путь и скоростной режим",
-        "Безопасное движение по дороге",
-      ],
-    },
-    requirements: {
-      uz: [
-        "B toifadagi guvohnoma va kamida 1 yil staj",
-        "Pasport yoki ID karta",
-        "Tibbiy ma'lumotnoma (083-shakl)",
-        "3.5×4.5 sm o'lchamdagi 4 ta foto",
-      ],
-      ru: [
-        "Права категории B и стаж от 1 года",
-        "Паспорт или ID-карта",
-        "Медицинская справка (форма 083)",
-        "4 фото размером 3.5×4.5 см",
-      ],
-    },
-    vehicles: {
-      uz: ["Tirkamali Chevrolet Cobalt"],
-      ru: ["Chevrolet Cobalt с прицепом"],
-    },
-    branchSlugs: ["buloq-avtodrom", "namangan-shahar"],
-    faq: [
-      {
-        question: {
-          uz: "BE toifa kimlarga kerak bo'ladi?",
-          ru: "Кому нужна категория BE?",
-        },
-        answer: {
-          uz: "Umumiy massasi 750 kg dan ortiq tirkamani B toifadagi avtomobil bilan tortish uchun BE toifasi talab qilinadi.",
-          ru: "Категория BE требуется, чтобы буксировать легковым автомобилем прицеп массой свыше 750 кг.",
-        },
-      },
-    ],
-    relatedSlugs: ["b", "ce"],
-  },
-  {
-    slug: "e",
-    code: "E",
-    name: { uz: "E toifa", ru: "Категория E" },
-    tagline: {
-      uz: "Tirkama bilan haydash huquqi",
-      ru: "Право управления с прицепом",
-    },
-    audience: {
-      uz: "Mavjud toifasiga tirkama bilan haydash huquqini qo'shmoqchi bo'lgan haydovchilar uchun.",
-      ru: "Для водителей, которые хотят добавить к своей категории право управления с прицепом.",
-    },
-    durationMonths: 1,
-    minAge: 19,
-    // Price not yet published by the school — rendered as "price on request"
-    // until confirmed (docs/OPEN_ITEMS.md #1). Never guess a price.
-    basePrice: null,
-    included: {
-      uz: [
-        "Tirkamali tarkib bilan ishlash nazariyasi",
-        "Avtodromda tirkama bilan manyovr amaliyoti",
-        "Yo'l amaliyoti",
-        "Imtihonga tayyorlov",
-      ],
-      ru: [
-        "Теория работы с прицепным составом",
-        "Практика манёвров с прицепом на автодроме",
-        "Практика на дороге",
-        "Подготовка к экзамену",
-      ],
-    },
-    curriculum: {
-      uz: [
-        "Tirkamani ulash va texnik tekshiruv",
-        "Yuk joylashtirish va mahkamlash",
-        "Orqaga yurish va tor joyda manyovr",
-        "Tormozlanish masofasi va xavfsiz tezlik",
-      ],
-      ru: [
-        "Сцепка прицепа и технический осмотр",
-        "Размещение и крепление груза",
-        "Движение задним ходом и манёвры в узких местах",
-        "Тормозной путь и безопасная скорость",
-      ],
-    },
-    requirements: {
-      uz: [
-        "Mavjud haydovchilik guvohnomasi va kamida 1 yil staj",
-        "Pasport yoki ID karta",
-        "Tibbiy ma'lumotnoma (083-shakl)",
-        "3.5×4.5 sm o'lchamdagi 4 ta foto",
-      ],
-      ru: [
-        "Имеющиеся водительские права и стаж от 1 года",
-        "Паспорт или ID-карта",
-        "Медицинская справка (форма 083)",
-        "4 фото размером 3.5×4.5 см",
-      ],
-    },
-    vehicles: {
-      uz: ["Tirkamali o'quv tarkibi"],
-      ru: ["Учебный состав с прицепом"],
-    },
-    branchSlugs: ["buloq-avtodrom"],
-    faq: [
-      {
-        question: {
-          uz: "E toifa narxi qancha?",
-          ru: "Сколько стоит категория E?",
-        },
-        answer: {
-          uz: "E toifa narxi hozircha e'lon qilinmagan. Aniq narx va shartlarni bilish uchun qabul bo'limiga qo'ng'iroq qiling.",
-          ru: "Цена категории E пока не опубликована. Для уточнения стоимости и условий позвоните в приёмную.",
-        },
-      },
-    ],
-    relatedSlugs: ["be", "ce"],
-  },
-  {
     slug: "d",
     code: "D",
     name: { uz: "D toifa", ru: "Категория D" },
@@ -598,7 +529,7 @@ export const categories: Category[] = [
     durationMonths: 2,
     minAge: 21,
     basePrice: 4_100_000,
-    promo: { price: 3_900_000, endsOn: "2026-07-31" },
+    promo: { price: 3_900_000, endsOn: "2026-10-31" },
     included: {
       uz: [
         "Yo'lovchi tashish nazariyasi",
