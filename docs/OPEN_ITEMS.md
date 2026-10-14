@@ -37,6 +37,7 @@ provided. Mirrors TZ doc 04 §13 and adds the concrete code locations affected.
 | 16 | Real News ("Yangiliklar") article text and dates | Awaiting client | `src/content/news.ts` — the new `/news` page ships with 4 posts reusing verified existing Gallery footage and plain factual captions ("bitiruv marosimi lavhasi", etc.), with **no invented dates or attendance figures**. Send real article copy and dates per event. | Enhancement |
 | 17 | Two corrupted video files in `public/assets/videos/graduation/` | Needs re-upload | `grad2.mp4` (2.2 MB) and `vdgr01.mp4` (14.9 MB) both fail `ffprobe` with "moov atom not found" — truncated during a prior upload, not usable in any browser. Excluded from Gallery/News. Re-export and re-upload both. | Enhancement |
 | 18 | `public/assets/photos/Type/image.png` excluded from Gallery | Resolved — not added | This is a category-reference infographic (A/B/BE/BC/C/E/D icons), not a candid photo, and it still shows the "E" category that row #12 confirmed is removed from the site. Adding it would visually contradict that decision. Left out of the Gallery/News upload on 2026-10-14. | Closed |
+| 19 | ~~Promo badge on BE and D~~ | **Fixed 2026-10-14** | A prior pass had applied the "Chegirma" promo (strikethrough + badge) to all 7 categories. The client clarified only A, B, BC, C and CE were ever given a discounted price; BE and D never had one. `promo` removed from both in `src/content/categories.ts` — they now render their flat `basePrice` only. | Closed |
 
 ### E category — resolved
 

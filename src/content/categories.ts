@@ -11,11 +11,14 @@ import type { Category } from "./types";
  * §12); it was briefly added in an earlier pass and is now removed again to
  * match that decision. /toifalar/e renders the ordinary 404.
  *
- * Promo deadlines (`endsOn`) are a PLACEHOLDER extension to 2026-10-31 —
- * the original 2026-07-31 date had lapsed, which silently dropped every
- * discount to its flat base price (activePromo() correctly honors expiry).
- * The discounted prices themselves are real; only this deadline needs the
- * client's confirmation. See docs/OPEN_ITEMS.md.
+ * Promo pricing (client-confirmed 2026-10-14) applies ONLY to A, B, BC, C
+ * and CE — BE and D were never given a discounted price, so they carry no
+ * `promo` field and render their flat `basePrice` only, with no "Chegirma"
+ * badge. Promo deadlines (`endsOn`) are a PLACEHOLDER extension to
+ * 2026-10-31 — the original 2026-07-31 date had lapsed, which silently
+ * dropped every discount to its flat base price (activePromo() correctly
+ * honors expiry). The discounted prices themselves are real; only this
+ * deadline needs the client's confirmation. See docs/OPEN_ITEMS.md.
  */
 export const categories: Category[] = [
   {
@@ -209,7 +212,6 @@ export const categories: Category[] = [
     durationMonths: 1,
     minAge: 19,
     basePrice: 1_725_000,
-    promo: { price: 1_450_000, endsOn: "2026-10-31" },
     included: {
       uz: [
         "Tirkama bilan ishlash nazariyasi",
@@ -529,7 +531,6 @@ export const categories: Category[] = [
     durationMonths: 2,
     minAge: 21,
     basePrice: 4_100_000,
-    promo: { price: 3_900_000, endsOn: "2026-10-31" },
     included: {
       uz: [
         "Yo'lovchi tashish nazariyasi",
