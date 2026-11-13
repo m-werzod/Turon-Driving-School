@@ -24,8 +24,8 @@ export const settings: SiteSettings = {
   telegramUrl: "https://t.me/AVTOMAKTABTURON",
   instagramUrl: "https://www.instagram.com/avtomaktab_turon/",
   hours: {
-    uz: "Dushanba – shanba, 09:00 – 18:00",
-    ru: "Понедельник – суббота, 09:00 – 18:00",
+    uz: "Har kuni, 08:00 – 19:00",
+    ru: "Ежедневно, 08:00 – 19:00",
   },
   counters: {
     branches: 7,

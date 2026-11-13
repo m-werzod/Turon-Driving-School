@@ -4,8 +4,8 @@ import { settings } from "./settings";
 const sharedPhones = settings.phones.map((phone) => phone.number);
 
 const standardHours = {
-  uz: "Dush – Shan, 09:00 – 18:00",
-  ru: "Пн – Сб, 09:00 – 18:00",
+  uz: "Har kuni, 08:00 – 19:00",
+  ru: "Ежедневно, 08:00 – 19:00",
 };
 
 /**
